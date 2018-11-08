@@ -10,11 +10,26 @@ using System.Windows.Forms;
 
 namespace GraphicsProgram
 {
-    public partial class Form1 : Form
+    public partial class InitialTestForm : Form
     {
-        public Form1()
+        public InitialTestForm()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
