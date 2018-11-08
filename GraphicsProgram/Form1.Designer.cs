@@ -35,7 +35,7 @@
             // 
             // EnterButton
             // 
-            this.EnterButton.Location = new System.Drawing.Point(807, 694);
+            this.EnterButton.Location = new System.Drawing.Point(812, 588);
             this.EnterButton.Name = "EnterButton";
             this.EnterButton.Size = new System.Drawing.Size(343, 55);
             this.EnterButton.TabIndex = 0;
@@ -45,16 +45,17 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(53, 706);
+            this.textBox1.Location = new System.Drawing.Point(43, 600);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(748, 31);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Location = new System.Drawing.Point(43, 53);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1124, 580);
+            this.groupBox1.Size = new System.Drawing.Size(1112, 511);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Output";
@@ -65,7 +66,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1220, 773);
+            this.ClientSize = new System.Drawing.Size(1220, 689);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.EnterButton);
