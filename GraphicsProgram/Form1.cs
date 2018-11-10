@@ -27,7 +27,7 @@ namespace GraphicsProgram
             this.Height = 500;
             g = pictureBox1.CreateGraphics();
         }
- 
+
         private void button3_Click(object sender, EventArgs e)
         {
         }
@@ -40,21 +40,18 @@ namespace GraphicsProgram
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string input = textBox1.Text;
-            
+
             if (input == "rectangle")
             {
-                xAxis = 100;
-                yAxis = 100;
-                
                 g.DrawRectangle(new Pen(Color.Black), xAxis, yAxis, height, width);
             }
             if (input == "circle")
             {
-                g.DrawEllipse(new Pen(Color.Black), xAxis, yAxis, 250, 250);
+                g.DrawEllipse(new Pen(Color.Black), xAxis, yAxis, height, width);
             }
             if (input == "line")
             {
-                g.DrawLine(new Pen(Color.Black), xAxis, yAxis, 500, 500);
+                g.DrawLine(new Pen(Color.Black), xAxis, yAxis, height, width);
             }
             if (input == "clear")
             {
@@ -66,19 +63,63 @@ namespace GraphicsProgram
         {
 
             int i;
-            i = int.Parse(textBox2.Text);
 
-            width = i;
+            if (int.TryParse(textBox2.Text, out i))
+            {
+                width = i;
+            }
+            else
+            {
+                //do nothing;
+            }
 
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             int i;
-            i = int.Parse(textBox3.Text);
 
-            height = i;
+            if (int.TryParse(textBox3.Text, out i))
+            {
+                height = i;
+            }
+            else
+            {
+                //do nothing;
+            }
+        }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedItem = comboBox1.Items[comboBox1.SelectedIndex].ToString();
+
+            if (selectedItem == "Rectangle")
+            {
+                g.DrawRectangle(new Pen(Color.Black), xAxis, yAxis, height, width);
+            }
+            if (selectedItem == "Circle")
+            {
+                g.DrawEllipse(new Pen(Color.Black), xAxis, yAxis, height, width);
+            }
+            if (selectedItem == "Square")
+            {
+                g.DrawRectangle(new Pen(Color.Black), xAxis, yAxis, height, width);
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            g.Clear(Color.White);
+        }
+
+        private void meniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+       
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
