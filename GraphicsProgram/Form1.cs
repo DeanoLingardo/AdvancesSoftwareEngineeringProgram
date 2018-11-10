@@ -15,6 +15,10 @@ namespace GraphicsProgram
         private Graphics g;
         private Pen myPen = new Pen(Color.Blue, 2);
 
+        int xAxis = 0;
+        int yAxis = 0;
+        int width = 0;
+        int height = 0;
 
         public InitialTestForm()
         {
@@ -26,45 +30,55 @@ namespace GraphicsProgram
  
         private void button3_Click(object sender, EventArgs e)
         {
-            g.DrawEllipse(new Pen(Color.Black), 100, 100, 250, 250);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            g.DrawRectangle(new Pen(Color.Black), 400, 100, 250, 250);
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            g.DrawLine(new Pen(Color.Black), 100, 100, 500, 500);
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            g.Clear(Color.Coral);
-        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string input;
-           input = textBox1.Text;
-
+            string input = textBox1.Text;
+            
             if (input == "rectangle")
             {
-                g.DrawRectangle(new Pen(Color.Black), 200, 100, 450, 250);
+                xAxis = 100;
+                yAxis = 100;
+                
+                g.DrawRectangle(new Pen(Color.Black), xAxis, yAxis, height, width);
             }
-            if (input == "ellipse")
+            if (input == "circle")
             {
-                g.DrawEllipse(new Pen(Color.Black), 100, 100, 250, 250);
+                g.DrawEllipse(new Pen(Color.Black), xAxis, yAxis, 250, 250);
             }
             if (input == "line")
             {
-                g.DrawLine(new Pen(Color.Black), 100, 100, 500, 500);
+                g.DrawLine(new Pen(Color.Black), xAxis, yAxis, 500, 500);
             }
             if (input == "clear")
             {
-                g.Clear(Color.Coral);
+                g.Clear(Color.Azure);
             }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+            int i;
+            i = int.Parse(textBox2.Text);
+
+            width = i;
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            int i;
+            i = int.Parse(textBox3.Text);
+
+            height = i;
+
         }
     }
 }
