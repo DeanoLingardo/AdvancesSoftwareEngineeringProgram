@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace GraphicsProgram
         int yAxis = 0;
         int width = 0;
         int height = 0;
+
 
         public InitialTestForm()
         {
@@ -101,7 +103,7 @@ namespace GraphicsProgram
             {
                 g.DrawEllipse(new Pen(Color.Black), xAxis, yAxis, height, width);
             }
-            if (selectedItem == "Square")
+            if (selectedItem == "Triangle")
             {
                 g.DrawRectangle(new Pen(Color.Black), xAxis, yAxis, height, width);
             }
@@ -119,7 +121,88 @@ namespace GraphicsProgram
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Goodbye!");
             Application.Exit();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            var b = InitialTestForm.DefaultBackColor;
+            b = Color.Black;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+
+        {
+
+            var b = InitialTestForm.DefaultBackColor;
+            b = Color.White;
+          
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            int i;
+
+            if (int.TryParse(textBox5.Text, out i))
+            {
+                xAxis = i;
+            }
+            else
+            {
+                //do nothing;
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            int i;
+
+            if (int.TryParse(textBox4.Text, out i))
+            {
+                yAxis = i;
+            }
+            else
+            {
+                //do nothing;
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string[] textBoxLines = textBox1.Lines;
+            //test integer, need to make input
+            int i = 120;
+
+            foreach (string line in textBoxLines)
+            {
+                //need to sort x and y coordinates to match a pen
+                if (line == "circle " + i)
+                {
+                   Circle ans = new Circle(i);
+                   double diameter = ans.getDiameter;
+                   float diameterF = Convert.ToSingle(diameter);
+                   g.DrawEllipse(myPen, 50, 50, diameterF, diameterF);
+                }
+                else if (line == "rectangle")
+                {
+                    
+                    g.DrawRectangle(new Pen(Color.Black), 100, 100, 150, 300);
+                }
+                else if (line == "triangle")
+                {
+                    MessageBox.Show("Coming Soon!");
+                }
+            }
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
