@@ -14,12 +14,12 @@ namespace GraphicsProgram
     public partial class InitialTestForm : Form
     {
         private Graphics g;
-        private Pen myPen = new Pen(Color.Blue, 2);
+        private Pen myPen = new Pen(Color.Orange, 2);
+        private PenPosition pen = new PenPosition();
 
         int xAxis = 0;
         int yAxis = 0;
-        int width = 0;
-        int height = 0;
+     
 
 
         public InitialTestForm()
@@ -36,78 +36,9 @@ namespace GraphicsProgram
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-        }
-
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            string input = textBox1.Text;
-
-            if (input == "rectangle")
-            {
-                g.DrawRectangle(new Pen(Color.Black), xAxis, yAxis, height, width);
-            }
-            if (input == "circle")
-            {
-                g.DrawEllipse(new Pen(Color.Black), xAxis, yAxis, height, width);
-            }
-            if (input == "line")
-            {
-                g.DrawLine(new Pen(Color.Black), xAxis, yAxis, height, width);
-            }
-            if (input == "clear")
-            {
-                g.Clear(Color.Azure);
-            }
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-            int i;
-
-            if (int.TryParse(textBox2.Text, out i))
-            {
-                width = i;
-            }
-            else
-            {
-                //do nothing;
-            }
 
         }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            int i;
-
-            if (int.TryParse(textBox3.Text, out i))
-            {
-                height = i;
-            }
-            else
-            {
-                //do nothing;
-            }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedItem = comboBox1.Items[comboBox1.SelectedIndex].ToString();
-
-            if (selectedItem == "Rectangle")
-            {
-                g.DrawRectangle(new Pen(Color.Black), xAxis, yAxis, height, width);
-            }
-            if (selectedItem == "Circle")
-            {
-                g.DrawEllipse(new Pen(Color.Black), xAxis, yAxis, height, width);
-            }
-            if (selectedItem == "Triangle")
-            {
-                g.DrawRectangle(new Pen(Color.Black), xAxis, yAxis, height, width);
-            }
-        }
+        
 
         private void button3_Click_1(object sender, EventArgs e)
         {
@@ -125,48 +56,6 @@ namespace GraphicsProgram
             Application.Exit();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            var b = InitialTestForm.DefaultBackColor;
-            b = Color.Black;
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-
-        {
-
-            var b = InitialTestForm.DefaultBackColor;
-            b = Color.White;
-          
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-            int i;
-
-            if (int.TryParse(textBox5.Text, out i))
-            {
-                xAxis = i;
-            }
-            else
-            {
-                //do nothing;
-            }
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            int i;
-
-            if (int.TryParse(textBox4.Text, out i))
-            {
-                yAxis = i;
-            }
-            else
-            {
-                //do nothing;
-            }
-        }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -176,31 +65,65 @@ namespace GraphicsProgram
         {
             string[] textBoxLines = textBox1.Lines;
             //test integer, need to make input
-            int i = 120;
 
             foreach (string line in textBoxLines)
             {
+                int i = 100;
+                int position = 100;
+                
+                
                 //need to sort x and y coordinates to match a pen
                 if (line == "circle " + i)
                 {
-                   Circle ans = new Circle(i);
+
+                    Circle ans = new Circle(i);
                    double diameter = ans.getDiameter;
                    float diameterF = Convert.ToSingle(diameter);
                    g.DrawEllipse(myPen, 50, 50, diameterF, diameterF);
                 }
-                else if (line == "rectangle")
+                else if (line == "rectangle" + i)
                 {
-                    
-                    g.DrawRectangle(new Pen(Color.Black), 100, 100, 150, 300);
+                    rectangle rec = new rectangle(i, i);
+                    double height = rec.Height;
+                    float heightF = Convert.ToSingle(height);
+
+                    double width = rec.Width;
+                    float widthF = Convert.ToSingle(width);
+
+                    g.DrawRectangle(myPen, 100, 100, heightF, widthF);
                 }
                 else if (line == "triangle")
                 {
                     MessageBox.Show("Coming Soon!");
                 }
-            }
+                else if (line == "move" + position) 
+                {
+                  PenPosition pen = new PenPosition();
+                    int x = pen.xPosition;
+                    int y = pen.yPosition;
+                    g.DrawLine(myPen, x, y, 100, 70);
+                    
+                
+    }
+}
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            g.Clear(Color.WhiteSmoke);
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+        }
+
+        private void InitialTestForm_Load(object sender, EventArgs e)
         {
 
         }
