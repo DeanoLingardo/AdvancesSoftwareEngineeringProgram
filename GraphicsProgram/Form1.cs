@@ -17,7 +17,7 @@ namespace GraphicsProgram
         private Pen myPen = new Pen(Color.Red, 2);
         private PenPosition pen = new PenPosition();
 
-        double circleRadius = 0;
+        double circleRadius;
         double rectangleWidth = 100;
         double rectangleHeight = 50;
         float penX = 50;
@@ -80,10 +80,11 @@ namespace GraphicsProgram
             foreach (string line in textBoxLines)
             {
                 var splitString = line.Split();
-                if (line == "circle")
+
+                if (line.Contains("circle"))
                 {
                     var number = splitString[1];
-                    if (Double.TryParse(number, out circleRadius))
+                    if (double.TryParse(number, out circleRadius))
                     {
                         Circle ans = new Circle(circleRadius);
                         double diameter = ans.getDiameter;
@@ -96,16 +97,26 @@ namespace GraphicsProgram
                     }
 
                 }
-                else if (line == "rectangle " + rectangleHeight + "," + rectangleWidth)
+                else if (line.Contains("rectangle"))
                 {
-                    rectangle rec = new rectangle(rectangleHeight, rectangleWidth);
-                    double height = rec.Height;
-                    float heightF = Convert.ToSingle(height);
+                    var W = splitString[1];
+                    var H = splitString[2];
+                    if (double.TryParse(W, out rectangleHeight) || double.TryParse(H, out rectangleWidth))
+                    {
+                        rectangle rec = new rectangle(rectangleHeight, rectangleWidth);
+                        double height = rec.Height;
+                        float heightF = Convert.ToSingle(height);
 
-                    double width = rec.Width;
-                    float widthF = Convert.ToSingle(width);
+                        double width = rec.Width;
+                        float widthF = Convert.ToSingle(width);
 
-                    g.DrawRectangle(myPen, penX, penY, heightF, widthF);
+                        g.DrawRectangle(myPen, penX, penY, heightF, widthF);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Parse Error");
+                    }
+
                 }
                 else if (line == "triangle")
                 {
