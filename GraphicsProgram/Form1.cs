@@ -14,13 +14,14 @@ namespace GraphicsProgram
     public partial class InitialTestForm : Form
     {
         private Graphics g;
-        private Pen myPen = new Pen(Color.Orange, 2);
+        private Pen myPen = new Pen(Color.Red, 2);
         private PenPosition pen = new PenPosition();
 
-        int xAxis = 0;
-        int yAxis = 0;
-     
-
+        double circleRadius = 0;
+        double rectangleWidth = 100;
+        double rectangleHeight = 50;
+        float penX = 50;
+        float penY = 50;
 
         public InitialTestForm()
         {
@@ -63,47 +64,50 @@ namespace GraphicsProgram
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //String array to split multi line text input
             string[] textBoxLines = textBox1.Lines;
-            //test integer, need to make input
-
+            
             foreach (string line in textBoxLines)
             {
-                int i = 100;
-                int position = 100;
-                
+                var num = double.TryParse(line, out double cirleRadius);
                 
                 //need to sort x and y coordinates to match a pen
-                if (line == "circle " + i)
+                if (line == "circle " + circleRadius)
                 {
-
-                    Circle ans = new Circle(i);
+                   Circle ans = new Circle(circleRadius);
                    double diameter = ans.getDiameter;
                    float diameterF = Convert.ToSingle(diameter);
-                   g.DrawEllipse(myPen, 50, 50, diameterF, diameterF);
+                   g.DrawEllipse(myPen, penX, penY, diameterF, diameterF);
                 }
-                else if (line == "rectangle" + i)
+                else if (line == "rectangle " + rectangleHeight + "," + rectangleWidth)
                 {
-                    rectangle rec = new rectangle(i, i);
+                    rectangle rec = new rectangle(rectangleHeight, rectangleWidth);
                     double height = rec.Height;
                     float heightF = Convert.ToSingle(height);
 
                     double width = rec.Width;
                     float widthF = Convert.ToSingle(width);
 
-                    g.DrawRectangle(myPen, 100, 100, heightF, widthF);
+                    g.DrawRectangle(myPen, penX, penY, heightF, widthF);
                 }
-                else if (line == "triangle")
+                else if (line == "triangle" || pen.Enabled == true)
                 {
                     MessageBox.Show("Coming Soon!");
                 }
-                else if (line == "move" + position) 
+                else if (line == "Penup")
                 {
-                  PenPosition pen = new PenPosition();
-                    int x = pen.xPosition;
-                    int y = pen.yPosition;
-                    g.DrawLine(myPen, x, y, 100, 70);
+                    pen.Enabled = true;
+                }
+                else if (line == "Pendown")
+                {
+                    pen.Enabled = false;
+                }
+                else if (line == "move" + penX + penY || pen.Enabled == true) 
+                {
+                    penX = pen.xPosition;
+                    penY = pen.yPosition;
                     
-                
+                    g.DrawLine(myPen, penX, penY, 100, 70);          
     }
 }
         }
@@ -124,6 +128,11 @@ namespace GraphicsProgram
         }
 
         private void InitialTestForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

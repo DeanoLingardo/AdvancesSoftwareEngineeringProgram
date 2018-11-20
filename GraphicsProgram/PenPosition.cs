@@ -9,13 +9,11 @@ namespace GraphicsProgram
     class PenPosition
     {
         private Boolean PenState;
-        private int xAxis;
-        private int yAxis;
+        int xAxis;
+        int yAxis;
 
         public PenPosition()
         {
-            xAxis = 0;
-            yAxis = 0;
             PenState = false;
         }
 
@@ -28,64 +26,20 @@ namespace GraphicsProgram
 
         public int xPosition
        {
-            get
-            {
-                return xAxis;
-            }
-       }
+            get { return xAxis; }
+            set { xAxis = value; }
+        }
 
         public int yPosition
         {
-            get
-            {
-                return yAxis;
-            }
+            get { return yAxis; }
+            set { yAxis = value; }
         }
-        // property Radius 
-        public int setxPosition
+       
+        public bool Enabled
         {
-
-            get
-            {
-                return xAxis;
-            }
-
-            set
-            {
-                // ensure non-negative radius value 
-                if (value >= 0)
-                    xAxis = value;
-            }
-        }
-
-        public int setyPosition
-        {
-
-            get
-            {
-                return yAxis;
-            }
-
-            set
-            {
-                // ensure non-negative radius value 
-                if (value >= 0)
-                    yAxis = value;
-            }
-        }
-        public Boolean upDown
-        {
-
-            get
-            {
-                return PenState;
-            }
-
-            set
-            {
-                if (value == true)
-                    PenState = value;
-            }
+            get { return PenState; }
+            set { PenState = value; }
         }
     }
 

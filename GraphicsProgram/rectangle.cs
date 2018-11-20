@@ -11,10 +11,10 @@ namespace GraphicsProgram
 {
     class rectangle
     {
-        private int height;
-        private int width;
+        private double height;
+        private double width;
 
-        public rectangle(int height,int width)
+        public rectangle(double height,double width)
         {
             this.width = width;
             this.height = height;

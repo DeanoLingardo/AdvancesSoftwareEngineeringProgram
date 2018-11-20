@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialTestForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -36,6 +37,12 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.commandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.penUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.penDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rectanglewhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.circleRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.traingleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.movePenXYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -46,6 +53,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +79,7 @@
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(574, 815);
             this.textBox1.TabIndex = 7;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // menuStrip1
             // 
@@ -111,9 +120,52 @@
             // 
             // commandsToolStripMenuItem
             // 
+            this.commandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.penUpToolStripMenuItem,
+            this.penDownToolStripMenuItem,
+            this.rectanglewhToolStripMenuItem,
+            this.circleRToolStripMenuItem,
+            this.traingleToolStripMenuItem,
+            this.movePenXYToolStripMenuItem});
             this.commandsToolStripMenuItem.Name = "commandsToolStripMenuItem";
             this.commandsToolStripMenuItem.Size = new System.Drawing.Size(148, 36);
             this.commandsToolStripMenuItem.Text = "Commands";
+            // 
+            // penUpToolStripMenuItem
+            // 
+            this.penUpToolStripMenuItem.Name = "penUpToolStripMenuItem";
+            this.penUpToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.penUpToolStripMenuItem.Text = "PenUp";
+            // 
+            // penDownToolStripMenuItem
+            // 
+            this.penDownToolStripMenuItem.Name = "penDownToolStripMenuItem";
+            this.penDownToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.penDownToolStripMenuItem.Text = "PenDown";
+            // 
+            // rectanglewhToolStripMenuItem
+            // 
+            this.rectanglewhToolStripMenuItem.Name = "rectanglewhToolStripMenuItem";
+            this.rectanglewhToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.rectanglewhToolStripMenuItem.Text = "Rectangle (W,H)";
+            // 
+            // circleRToolStripMenuItem
+            // 
+            this.circleRToolStripMenuItem.Name = "circleRToolStripMenuItem";
+            this.circleRToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.circleRToolStripMenuItem.Text = "Circle (R)";
+            // 
+            // traingleToolStripMenuItem
+            // 
+            this.traingleToolStripMenuItem.Name = "traingleToolStripMenuItem";
+            this.traingleToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.traingleToolStripMenuItem.Text = "Traingle";
+            // 
+            // movePenXYToolStripMenuItem
+            // 
+            this.movePenXYToolStripMenuItem.Name = "movePenXYToolStripMenuItem";
+            this.movePenXYToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.movePenXYToolStripMenuItem.Text = "MovePen(X,Y)";
             // 
             // helpToolStripMenuItem
             // 
@@ -205,7 +257,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "InitialTestForm";
-            this.Text = "2D Graphics";
+            this.Text = "Introduction to programming";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.InitialTestForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -235,6 +287,13 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem penUpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem penDownToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rectanglewhToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem circleRToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem traingleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem movePenXYToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
