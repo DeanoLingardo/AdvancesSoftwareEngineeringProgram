@@ -64,6 +64,16 @@ namespace GraphicsProgram
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //Update X & Y coardinte text fields on run
+            float updateY = penY;
+            float updateX = penX;
+
+            string stringY = updateY.ToString();
+            string stringX = updateX.ToString();
+
+            textBox3.Text = stringX;
+            textBox2.Text = stringY;
+
             //String array to split multi line text input
             string[] textBoxLines = textBox1.Lines;
             
@@ -90,7 +100,7 @@ namespace GraphicsProgram
 
                     g.DrawRectangle(myPen, penX, penY, heightF, widthF);
                 }
-                else if (line == "triangle" || pen.Enabled == true)
+                else if (line == "triangle")
                 {
                     MessageBox.Show("Coming Soon!");
                 }
@@ -102,7 +112,7 @@ namespace GraphicsProgram
                 {
                     pen.Enabled = false;
                 }
-                else if (line == "move" + penX + penY || pen.Enabled == true) 
+                else if (line == "move" + penX + penY) 
                 {
                     penX = pen.xPosition;
                     penY = pen.yPosition;
@@ -133,6 +143,16 @@ namespace GraphicsProgram
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
