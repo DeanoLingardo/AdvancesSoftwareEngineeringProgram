@@ -79,15 +79,22 @@ namespace GraphicsProgram
             
             foreach (string line in textBoxLines)
             {
-                var num = double.TryParse(line, out double cirleRadius);
-                
-                //need to sort x and y coordinates to match a pen
-                if (line == "circle " + circleRadius)
+                var splitString = line.Split();
+                if (line == "circle")
                 {
-                   Circle ans = new Circle(circleRadius);
-                   double diameter = ans.getDiameter;
-                   float diameterF = Convert.ToSingle(diameter);
-                   g.DrawEllipse(myPen, penX, penY, diameterF, diameterF);
+                    var number = splitString[1];
+                    if (Double.TryParse(number, out circleRadius))
+                    {
+                        Circle ans = new Circle(circleRadius);
+                        double diameter = ans.getDiameter;
+                        float diameterF = Convert.ToSingle(diameter);
+                        g.DrawEllipse(myPen, penX, penY, diameterF, diameterF);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Parse Error");
+                    }
+
                 }
                 else if (line == "rectangle " + rectangleHeight + "," + rectangleWidth)
                 {
