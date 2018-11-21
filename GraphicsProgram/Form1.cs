@@ -14,14 +14,15 @@ namespace GraphicsProgram
     public partial class InitialTestForm : Form
     {
         private Graphics g;
-        private Pen myPen = new Pen(Color.Red, 2);
+        private Pen myPen = new Pen(Color.Black, 2);
         private PenPosition pen = new PenPosition();
 
         double circleRadius;
-        double rectangleWidth = 100;
-        double rectangleHeight = 50;
-        float penX = 50;
-        float penY = 50;
+        double rectangleWidth;
+        double rectangleHeight;
+        int penX;
+        int penY;
+        
 
         public InitialTestForm()
         {
@@ -65,8 +66,8 @@ namespace GraphicsProgram
         private void button1_Click(object sender, EventArgs e)
         {
             //Update X & Y coardinte text fields on run
-            float updateY = penY;
-            float updateX = penX;
+            int updateY = penY;
+            int updateX = penX;
 
             string stringY = updateY.ToString();
             string stringX = updateX.ToString();
@@ -86,14 +87,14 @@ namespace GraphicsProgram
                     var number = splitString[1];
                     if (double.TryParse(number, out circleRadius))
                     {
-                        Circle ans = new Circle(circleRadius);
-                        double diameter = ans.getDiameter;
+                        Circle circle = new Circle(circleRadius);
+                        double diameter = circle.getDiameter;
                         float diameterF = Convert.ToSingle(diameter);
                         g.DrawEllipse(myPen, penX, penY, diameterF, diameterF);
                     }
                     else
                     {
-                        MessageBox.Show("Parse Error");
+                        MessageBox.Show("Circle Parse Error");
                     }
 
                 }
@@ -101,24 +102,24 @@ namespace GraphicsProgram
                 {
                     var W = splitString[1];
                     var H = splitString[2];
-                    if (double.TryParse(W, out rectangleHeight) || double.TryParse(H, out rectangleWidth))
+                    if (double.TryParse(W, out rectangleWidth) || double.TryParse(H, out rectangleHeight))
                     {
-                        rectangle rec = new rectangle(rectangleHeight, rectangleWidth);
-                        double height = rec.Height;
-                        float heightF = Convert.ToSingle(height);
+                        rectangle rec = new rectangle(rectangleWidth, rectangleHeight);
 
                         double width = rec.Width;
-                        float widthF = Convert.ToSingle(width);
+                        double height = rec.Height;
 
-                        g.DrawRectangle(myPen, penX, penY, heightF, widthF);
+                        float widthF = Convert.ToSingle(width);
+                        float heightF = Convert.ToSingle(height);
+
+                        g.DrawRectangle(myPen, penX, penY, widthF, heightF);
                     }
                     else
                     {
-                        MessageBox.Show("Parse Error");
+                        MessageBox.Show("Rectangle Parse Error");
                     }
-
                 }
-                else if (line == "triangle")
+                else if (line.Contains("triangle"))
                 {
                     MessageBox.Show("Coming Soon!");
                 }
@@ -130,14 +131,21 @@ namespace GraphicsProgram
                 {
                     pen.Enabled = false;
                 }
-                else if (line == "move" + penX + penY) 
+                else if (line.Contains("move")) 
                 {
-                    penX = pen.xPosition;
-                    penY = pen.yPosition;
-                    
-                    g.DrawLine(myPen, penX, penY, 100, 70);          
-    }
-}
+                    var x = splitString[1];
+                    var y = splitString[2];
+                    if (int.TryParse(x, out penX) || int.TryParse(y, out penY))
+                    {
+                        pen.Xposition = penX;
+                        pen.Yposition = penY;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Move Parse Error");
+                    }
+                }
+            }
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)

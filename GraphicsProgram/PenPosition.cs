@@ -24,13 +24,13 @@ namespace GraphicsProgram
         }
 
 
-        public int xPosition
+        public int Xposition
        {
             get { return xAxis; }
             set { xAxis = value; }
         }
 
-        public int yPosition
+        public int Yposition
         {
             get { return yAxis; }
             set { yAxis = value; }
