@@ -60,10 +60,17 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -93,7 +100,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(565, 815);
+            this.textBox1.Size = new System.Drawing.Size(565, 702);
             this.textBox1.TabIndex = 7;
             this.toolTip1.SetToolTip(this.textBox1, "Use this box to enter commands!");
             this.textBox1.WordWrap = false;
@@ -152,41 +159,44 @@
             // penUpToolStripMenuItem
             // 
             this.penUpToolStripMenuItem.Name = "penUpToolStripMenuItem";
-            this.penUpToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.penUpToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.penUpToolStripMenuItem.Text = "PenUp";
             // 
             // penDownToolStripMenuItem
             // 
             this.penDownToolStripMenuItem.Name = "penDownToolStripMenuItem";
-            this.penDownToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.penDownToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.penDownToolStripMenuItem.Text = "PenDown";
             // 
             // rectanglewhToolStripMenuItem
             // 
             this.rectanglewhToolStripMenuItem.Name = "rectanglewhToolStripMenuItem";
-            this.rectanglewhToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.rectanglewhToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.rectanglewhToolStripMenuItem.Text = "Rectangle (W,H)";
             // 
             // circleRToolStripMenuItem
             // 
             this.circleRToolStripMenuItem.Name = "circleRToolStripMenuItem";
-            this.circleRToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.circleRToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.circleRToolStripMenuItem.Text = "Circle (R)";
             // 
             // traingleToolStripMenuItem
             // 
             this.traingleToolStripMenuItem.Name = "traingleToolStripMenuItem";
-            this.traingleToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.traingleToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.traingleToolStripMenuItem.Text = "Traingle";
             // 
             // movePenXYToolStripMenuItem
             // 
             this.movePenXYToolStripMenuItem.Name = "movePenXYToolStripMenuItem";
-            this.movePenXYToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.movePenXYToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.movePenXYToolStripMenuItem.Text = "MovePen(X,Y)";
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fAQToolStripMenuItem,
+            this.programInformationToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 36);
             this.helpToolStripMenuItem.Text = "Help";
@@ -309,12 +319,13 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.groupBox1.Location = new System.Drawing.Point(29, 1341);
+            this.groupBox1.Location = new System.Drawing.Point(32, 1341);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(574, 105);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Co-ordianates";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox2
             // 
@@ -324,12 +335,55 @@
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.groupBox2.Location = new System.Drawing.Point(29, 968);
+            this.groupBox2.Location = new System.Drawing.Point(38, 844);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(574, 367);
+            this.groupBox2.Size = new System.Drawing.Size(565, 367);
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Controls";
+            // 
+            // fAQToolStripMenuItem
+            // 
+            this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
+            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(336, 38);
+            this.fAQToolStripMenuItem.Text = "FAQ";
+            // 
+            // programInformationToolStripMenuItem
+            // 
+            this.programInformationToolStripMenuItem.Name = "programInformationToolStripMenuItem";
+            this.programInformationToolStripMenuItem.Size = new System.Drawing.Size(336, 38);
+            this.programInformationToolStripMenuItem.Text = "Program Information";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.groupBox3.Location = new System.Drawing.Point(32, 1217);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(574, 105);
+            this.groupBox3.TabIndex = 36;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "PEN STATUS";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(43, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(0, 37);
+            this.label6.TabIndex = 29;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox4.Location = new System.Drawing.Point(56, 46);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(464, 31);
+            this.textBox4.TabIndex = 37;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // InitialTestForm
             // 
@@ -339,6 +393,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(2564, 1502);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -362,6 +417,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,6 +456,12 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ToolStripMenuItem fAQToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem programInformationToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 

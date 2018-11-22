@@ -65,7 +65,7 @@ namespace GraphicsProgram
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Update X & Y coardinte text fields on run
+            //Update X & Y coardinte text fields on run command
             int updateX = penX;
             int updateY = penY;
 
@@ -74,10 +74,9 @@ namespace GraphicsProgram
 
             textBox3.Text = stringX;
             textBox2.Text = stringY;
-
             //String array to split multi line text input
             string[] textBoxLines = textBox1.Lines;
-            
+           
             foreach (string line in textBoxLines)
             {
                 var splitString = line.Split();
@@ -131,7 +130,7 @@ namespace GraphicsProgram
                 {
                     pen.Enabled = false;
                 }
-                else if (line.Contains("move")) 
+                else if (line.Contains("move"))
                 {
                     var x = splitString[1];
                     var y = splitString[2];
@@ -139,6 +138,21 @@ namespace GraphicsProgram
                     {
                         pen.Xposition = penX;
                         pen.Yposition = penY;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Move Parse Error");
+                    }
+                }
+                else if (line.Contains("move") && pen.Enabled)
+                {
+                    var x = splitString[1];
+                    var y = splitString[2];
+                    if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
+                    {
+                        pen.Xposition = penX;
+                        pen.Yposition = penY;
+                        g.DrawRectangle(myPen, penX, penY, penX, penY);
                     }
                     else
                     {
@@ -179,6 +193,16 @@ namespace GraphicsProgram
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
