@@ -286,6 +286,7 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(105, 40);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 31);
             this.textBox2.TabIndex = 33;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -296,6 +297,7 @@
             this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(379, 46);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(100, 31);
             this.textBox3.TabIndex = 34;
             // 
@@ -345,6 +347,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox2);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;

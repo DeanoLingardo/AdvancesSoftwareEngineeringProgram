@@ -8,39 +8,23 @@ namespace GraphicsProgram
 {
     class PenPosition
     {
-        private Boolean PenState;
-        int xAxis;
-        int yAxis;
-
         public PenPosition()
         {
-            PenState = false;
+            Enabled = false;
         }
 
         public PenPosition(int yAxis, int xAxis)
         {
-            this.xAxis = xAxis;
-            this.yAxis = yAxis;
+            this.Xposition = xAxis;
+            this.Yposition = yAxis;
         }
 
 
-        public int Xposition
-       {
-            get { return xAxis; }
-            set { xAxis = value; }
-        }
+        public int Xposition { get; set; }
 
-        public int Yposition
-        {
-            get { return yAxis; }
-            set { yAxis = value; }
-        }
-       
-        public bool Enabled
-        {
-            get { return PenState; }
-            set { PenState = value; }
-        }
+        public int Yposition { get; set; }
+
+        public bool Enabled { get; set; }
     }
 
 }

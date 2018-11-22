@@ -66,11 +66,11 @@ namespace GraphicsProgram
         private void button1_Click(object sender, EventArgs e)
         {
             //Update X & Y coardinte text fields on run
-            int updateY = penY;
             int updateX = penX;
+            int updateY = penY;
 
-            string stringY = updateY.ToString();
             string stringX = updateX.ToString();
+            string stringY = updateY.ToString();
 
             textBox3.Text = stringX;
             textBox2.Text = stringY;
@@ -102,7 +102,7 @@ namespace GraphicsProgram
                 {
                     var W = splitString[1];
                     var H = splitString[2];
-                    if (double.TryParse(W, out rectangleWidth) || double.TryParse(H, out rectangleHeight))
+                    if (double.TryParse(W, out rectangleWidth) && double.TryParse(H, out rectangleHeight))
                     {
                         rectangle rec = new rectangle(rectangleWidth, rectangleHeight);
 
@@ -135,7 +135,7 @@ namespace GraphicsProgram
                 {
                     var x = splitString[1];
                     var y = splitString[2];
-                    if (int.TryParse(x, out penX) || int.TryParse(y, out penY))
+                    if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
                     {
                         pen.Xposition = penX;
                         pen.Yposition = penY;
