@@ -21,7 +21,7 @@ Visual Studio
 
 ## Authors
 
-* **Dean Lingard** - *All work* - [PurpleBooth](https://github.com/deanolingardo)
+* **Dean Lingard** - *All work* - [DeanoLingardo](https://github.com/deanolingardo)
 
 ## Acknowledgments
 
