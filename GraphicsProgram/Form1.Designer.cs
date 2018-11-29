@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialTestForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.userinput = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.meniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,13 +44,15 @@
             this.traingleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movePenXYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.colorDialog2 = new System.Windows.Forms.ColorDialog();
             this.colorDialog3 = new System.Windows.Forms.ColorDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.runbutton = new System.Windows.Forms.Button();
+            this.clearscreenbutton = new System.Windows.Forms.Button();
+            this.clearterminalbutton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -61,11 +63,17 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.programInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.colorDialog4 = new System.Windows.Forms.ColorDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.imageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.textFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -82,29 +90,29 @@
             this.pictureBox1.Size = new System.Drawing.Size(1824, 1324);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // textBox1
+            // userinput
             // 
-            this.textBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            this.userinput.AutoCompleteCustomSource.AddRange(new string[] {
             "cirlce",
             "rectangle",
             "move",
             "line",
             "triangle"});
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.textBox1.Location = new System.Drawing.Point(38, 122);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(565, 702);
-            this.textBox1.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.textBox1, "Use this box to enter commands!");
-            this.textBox1.WordWrap = false;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.userinput.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.userinput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.userinput.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userinput.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.userinput.Location = new System.Drawing.Point(38, 122);
+            this.userinput.Margin = new System.Windows.Forms.Padding(4);
+            this.userinput.Multiline = true;
+            this.userinput.Name = "userinput";
+            this.userinput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.userinput.Size = new System.Drawing.Size(565, 702);
+            this.userinput.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.userinput, "Use this box to enter commands!");
+            this.userinput.WordWrap = false;
             // 
             // menuStrip1
             // 
@@ -116,7 +124,7 @@
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2564, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(2564, 42);
             this.menuStrip1.TabIndex = 22;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,20 +134,25 @@
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem});
             this.meniToolStripMenuItem.Name = "meniToolStripMenuItem";
-            this.meniToolStripMenuItem.Size = new System.Drawing.Size(90, 36);
+            this.meniToolStripMenuItem.Size = new System.Drawing.Size(90, 38);
             this.meniToolStripMenuItem.Text = "Menu";
-            this.meniToolStripMenuItem.Click += new System.EventHandler(this.meniToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
+            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.imageToolStripMenuItem1,
+            this.textFileToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // saveToolStripMenuItem
             // 
+            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.imageToolStripMenuItem,
+            this.textboxToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -153,43 +166,43 @@
             this.traingleToolStripMenuItem,
             this.movePenXYToolStripMenuItem});
             this.commandsToolStripMenuItem.Name = "commandsToolStripMenuItem";
-            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(148, 36);
+            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(148, 38);
             this.commandsToolStripMenuItem.Text = "Commands";
             // 
             // penUpToolStripMenuItem
             // 
             this.penUpToolStripMenuItem.Name = "penUpToolStripMenuItem";
-            this.penUpToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.penUpToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.penUpToolStripMenuItem.Text = "PenUp";
             // 
             // penDownToolStripMenuItem
             // 
             this.penDownToolStripMenuItem.Name = "penDownToolStripMenuItem";
-            this.penDownToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.penDownToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.penDownToolStripMenuItem.Text = "PenDown";
             // 
             // rectanglewhToolStripMenuItem
             // 
             this.rectanglewhToolStripMenuItem.Name = "rectanglewhToolStripMenuItem";
-            this.rectanglewhToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.rectanglewhToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.rectanglewhToolStripMenuItem.Text = "Rectangle (W,H)";
             // 
             // circleRToolStripMenuItem
             // 
             this.circleRToolStripMenuItem.Name = "circleRToolStripMenuItem";
-            this.circleRToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.circleRToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.circleRToolStripMenuItem.Text = "Circle (R)";
             // 
             // traingleToolStripMenuItem
             // 
             this.traingleToolStripMenuItem.Name = "traingleToolStripMenuItem";
-            this.traingleToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.traingleToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.traingleToolStripMenuItem.Text = "Traingle";
             // 
             // movePenXYToolStripMenuItem
             // 
             this.movePenXYToolStripMenuItem.Name = "movePenXYToolStripMenuItem";
-            this.movePenXYToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.movePenXYToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.movePenXYToolStripMenuItem.Text = "MovePen(X,Y)";
             // 
             // helpToolStripMenuItem
@@ -198,53 +211,65 @@
             this.fAQToolStripMenuItem,
             this.programInformationToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 36);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 38);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // fAQToolStripMenuItem
+            // 
+            this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
+            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(336, 38);
+            this.fAQToolStripMenuItem.Text = "FAQ";
+            // 
+            // programInformationToolStripMenuItem
+            // 
+            this.programInformationToolStripMenuItem.Name = "programInformationToolStripMenuItem";
+            this.programInformationToolStripMenuItem.Size = new System.Drawing.Size(336, 38);
+            this.programInformationToolStripMenuItem.Text = "Program Information";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(64, 36);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(64, 38);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // button1
+            // runbutton
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(50, 33);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(464, 88);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "RUN";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.runbutton.BackColor = System.Drawing.Color.Transparent;
+            this.runbutton.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.runbutton.ForeColor = System.Drawing.Color.Black;
+            this.runbutton.Location = new System.Drawing.Point(50, 33);
+            this.runbutton.Margin = new System.Windows.Forms.Padding(6);
+            this.runbutton.Name = "runbutton";
+            this.runbutton.Size = new System.Drawing.Size(464, 78);
+            this.runbutton.TabIndex = 23;
+            this.runbutton.Text = "RUN";
+            this.runbutton.UseVisualStyleBackColor = false;
+            this.runbutton.Click += new System.EventHandler(this.runbutton_Click);
             // 
-            // button2
+            // clearscreenbutton
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(50, 140);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(464, 93);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "CLEAR SCREEN";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.clearscreenbutton.BackColor = System.Drawing.Color.Transparent;
+            this.clearscreenbutton.ForeColor = System.Drawing.Color.Black;
+            this.clearscreenbutton.Location = new System.Drawing.Point(44, 133);
+            this.clearscreenbutton.Name = "clearscreenbutton";
+            this.clearscreenbutton.Size = new System.Drawing.Size(464, 76);
+            this.clearscreenbutton.TabIndex = 24;
+            this.clearscreenbutton.Text = "CLEAR SCREEN";
+            this.clearscreenbutton.UseVisualStyleBackColor = false;
+            this.clearscreenbutton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // clearterminalbutton
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(50, 253);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(464, 84);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "CLEAR TERMINAL";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click_2);
+            this.clearterminalbutton.BackColor = System.Drawing.Color.Transparent;
+            this.clearterminalbutton.ForeColor = System.Drawing.Color.Black;
+            this.clearterminalbutton.Location = new System.Drawing.Point(50, 246);
+            this.clearterminalbutton.Name = "clearterminalbutton";
+            this.clearterminalbutton.Size = new System.Drawing.Size(464, 72);
+            this.clearterminalbutton.TabIndex = 25;
+            this.clearterminalbutton.Text = "CLEAR TERMINAL";
+            this.clearterminalbutton.UseVisualStyleBackColor = false;
+            this.clearterminalbutton.Click += new System.EventHandler(this.button3_Click_2);
             // 
             // label1
             // 
@@ -299,7 +324,6 @@
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 31);
             this.textBox2.TabIndex = 33;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
@@ -325,15 +349,14 @@
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Co-ordianates";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox2
             // 
             this.groupBox2.AutoSize = true;
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.clearscreenbutton);
+            this.groupBox2.Controls.Add(this.runbutton);
+            this.groupBox2.Controls.Add(this.clearterminalbutton);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.groupBox2.Location = new System.Drawing.Point(38, 844);
             this.groupBox2.Name = "groupBox2";
@@ -341,18 +364,6 @@
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Controls";
-            // 
-            // fAQToolStripMenuItem
-            // 
-            this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
-            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(336, 38);
-            this.fAQToolStripMenuItem.Text = "FAQ";
-            // 
-            // programInformationToolStripMenuItem
-            // 
-            this.programInformationToolStripMenuItem.Name = "programInformationToolStripMenuItem";
-            this.programInformationToolStripMenuItem.Size = new System.Drawing.Size(336, 38);
-            this.programInformationToolStripMenuItem.Text = "Program Information";
             // 
             // groupBox3
             // 
@@ -367,6 +378,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PEN STATUS";
             // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox4.Location = new System.Drawing.Point(56, 46);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(464, 31);
+            this.textBox4.TabIndex = 37;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -376,14 +395,41 @@
             this.label6.Size = new System.Drawing.Size(0, 37);
             this.label6.TabIndex = 29;
             // 
-            // textBox4
+            // saveFileDialog1
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox4.Location = new System.Drawing.Point(56, 46);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(464, 31);
-            this.textBox4.TabIndex = 37;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.saveFileDialog1.DefaultExt = "txt";
+            // 
+            // imageToolStripMenuItem
+            // 
+            this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
+            this.imageToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.imageToolStripMenuItem.Text = "Image";
+            this.imageToolStripMenuItem.Click += new System.EventHandler(this.imageToolStripMenuItem_Click);
+            // 
+            // textboxToolStripMenuItem
+            // 
+            this.textboxToolStripMenuItem.Name = "textboxToolStripMenuItem";
+            this.textboxToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.textboxToolStripMenuItem.Text = "Textbox";
+            this.textboxToolStripMenuItem.Click += new System.EventHandler(this.textboxToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // imageToolStripMenuItem1
+            // 
+            this.imageToolStripMenuItem1.Name = "imageToolStripMenuItem1";
+            this.imageToolStripMenuItem1.Size = new System.Drawing.Size(324, 38);
+            this.imageToolStripMenuItem1.Text = "Image";
+            this.imageToolStripMenuItem1.Click += new System.EventHandler(this.imageToolStripMenuItem1_Click);
+            // 
+            // textFileToolStripMenuItem
+            // 
+            this.textFileToolStripMenuItem.Name = "textFileToolStripMenuItem";
+            this.textFileToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.textFileToolStripMenuItem.Text = "Text File";
+            this.textFileToolStripMenuItem.Click += new System.EventHandler(this.textFileToolStripMenuItem_Click);
             // 
             // InitialTestForm
             // 
@@ -397,7 +443,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.userinput);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox2);
@@ -410,7 +456,6 @@
             this.Name = "InitialTestForm";
             this.Text = "Introduction to programming";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.InitialTestForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -427,7 +472,7 @@
 
         #endregion
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox userinput;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem meniToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -438,9 +483,9 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.ColorDialog colorDialog2;
         private System.Windows.Forms.ColorDialog colorDialog3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button runbutton;
+        private System.Windows.Forms.Button clearscreenbutton;
+        private System.Windows.Forms.Button clearterminalbutton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem penUpToolStripMenuItem;
@@ -462,6 +507,14 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ColorDialog colorDialog4;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem textboxToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem textFileToolStripMenuItem;
     }
 }
 
