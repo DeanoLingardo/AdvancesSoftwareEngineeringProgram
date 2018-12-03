@@ -1,30 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GraphicsProgram
+﻿namespace GraphicsProgram
 {
-    class PenPosition
+    public class PenPosition
     {
-        public PenPosition()
-        {
-            Enabled = false;
-        }
+        public int X { get; set; }
 
-        public PenPosition(int yAxis, int xAxis)
-        {
-            this.Xposition = xAxis;
-            this.Yposition = yAxis;
-        }
-
-
-        public int Xposition { get; set; }
-
-        public int Yposition { get; set; }
+        public int Y { get; set; }
 
         public bool Enabled { get; set; }
+
+        public string GetXAsString()
+        {
+            return X.ToString();
+        }
+
+        public string GetYAsString()
+        {
+            return Y.ToString();
+        }
     }
 
 }
