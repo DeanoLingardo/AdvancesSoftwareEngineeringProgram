@@ -23,7 +23,6 @@ namespace GraphicsProgram
         double rectangleHeight;
         int penX;
         int penY;
-        
 
         public InitialTestForm()
         {
@@ -67,7 +66,7 @@ namespace GraphicsProgram
 
 
 
-            //Input parsing
+            //Input parsing, split multilines to single lines then split the single lines into an array
             foreach (string line in textBoxLines)
             {
                 var splitString = line.Split();
