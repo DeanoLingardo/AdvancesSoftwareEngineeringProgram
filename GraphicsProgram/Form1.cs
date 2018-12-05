@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphicsProgram.Shapes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RectangleShape = GraphicsProgram.Shapes.RectangleShape;
 
 namespace GraphicsProgram
 {
@@ -17,6 +19,8 @@ namespace GraphicsProgram
         private Graphics g;
         private Pen myPen = new Pen(Color.Black, 2);
         private PenPosition pen = new PenPosition();
+
+        private IEnumerable<IUserOperationStrategy> _userOperationStrategies;
 
         double circleRadius;
         double rectangleWidth;
@@ -27,9 +31,14 @@ namespace GraphicsProgram
         public InitialTestForm()
         {
             InitializeComponent();
-            this.Width = 1000;
-            this.Height = 500;
+            Width = 1000;
+            Height = 500;
             g = pictureBox1.CreateGraphics();
+
+            _userOperationStrategies = new List<IUserOperationStrategy>
+            {
+                new CircleIfUserOperation()
+            };
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -43,29 +52,21 @@ namespace GraphicsProgram
             Application.Exit();
         }
 
-
-        
-
         private void runbutton_Click(object sender, EventArgs e)
         {
             //Update X & Y coardinte text fields on run command
-            int updateX = penX;
-            int updateY = penY;
+            var penPosition = new PenPosition();
+            penPosition.X = penX;
+            penPosition.Y = penY;
 
-            string stringX = updateX.ToString();
-            string stringY = updateY.ToString();
-
-            textBox3.Text = stringX;
-            textBox2.Text = stringY;
-
-
+            textBox3.Text = penPosition.GetXAsString();
+            textBox2.Text = penPosition.GetYAsString();
+            
             //String array to split multi line text input
             string[] textBoxLines = userinput.Lines;
 
             string[] commands = new string[] { "repeat", "loop", "if" };
-
-
-
+                       
             //Input parsing, split multilines to single lines then split the single lines into an array
             foreach (string line in textBoxLines)
             {
@@ -73,19 +74,7 @@ namespace GraphicsProgram
 
                 if (line.Contains("circle"))
                 {
-                    var number = splitString[1];
-                    if (double.TryParse(number, out circleRadius))
-                    {
-                        Circle circle = new Circle(circleRadius);
-                        double diameter = circle.getDiameter;
-                        float diameterF = Convert.ToSingle(diameter);
-                        g.DrawEllipse(myPen, penX, penY, diameterF, diameterF);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Circle Parse Error");
-                    }
-
+                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.If, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
                 }
                 else if (line.Contains("rectangle"))
                 {
@@ -93,13 +82,10 @@ namespace GraphicsProgram
                     var H = splitString[2];
                     if (double.TryParse(W, out rectangleWidth) && double.TryParse(H, out rectangleHeight))
                     {
-                        rectangle rec = new rectangle(rectangleWidth, rectangleHeight);
-
-                        double width = rec.Width;
-                        double height = rec.Height;
-
-                        float widthF = Convert.ToSingle(width);
-                        float heightF = Convert.ToSingle(height);
+                        IShape rec = new RectangleShape(rectangleWidth, rectangleHeight);
+                        
+                        float widthF = Convert.ToSingle(W);
+                        float heightF = Convert.ToSingle(H);
 
                         g.DrawRectangle(myPen, penX, penY, widthF, heightF);
                     }
@@ -126,8 +112,8 @@ namespace GraphicsProgram
                     var y = splitString[2];
                     if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
                     {
-                        pen.Xposition = penX;
-                        pen.Yposition = penY;
+                        pen.X = penX;
+                        pen.Y = penY;
                     }
                     else
                     {
@@ -140,8 +126,8 @@ namespace GraphicsProgram
                     var y = splitString[2];
                     if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
                     {
-                        pen.Xposition = penX;
-                        pen.Yposition = penY;
+                        pen.X = penX;
+                        pen.Y = penY;
                         g.DrawRectangle(myPen, penX, penY, penX, penY);
                     }
                     else
