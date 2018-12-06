@@ -17,12 +17,12 @@ namespace GraphicsProgram
             Operation = operation;
         }
 
-        public string getOperation()
+        public string GetOperation()
         {
             return Operation;
         }
 
-        public string getshape()
+        public string Getshape()
         {
             return Shape;
         }

@@ -3,16 +3,11 @@ using System.Drawing;
 using GraphicsProgram;
 using GraphicsProgram.Shapes;
 
-public class SquareIfUserOperation : IUserOperationStrategy
+public class RectangleBasicUserOperation : IUserOperationStrategy
 {
     public bool AppliesTo(string userOperationType, string shape)
     {
-        return userOperationType.Equals(OperationType.If) && shape.Equals(ShapeType.Square);
-    }
-
-    public void DoDrawing(Graphics g, IShape shape)
-    {
-        throw new NotImplementedException();
+        return userOperationType.Equals(OperationType.Basic) && shape.Equals(ShapeType.Rectangle);
     }
 
     public void DoDrawing(Pen pen, PenPosition penPosition, Graphics g, string line)
@@ -22,7 +17,8 @@ public class SquareIfUserOperation : IUserOperationStrategy
         double rectangleHeight;
 
         var W = split[1];
-        var H = split[2];
+        var H = split[2]; 
+
         if (double.TryParse(W, out rectangleWidth) && double.TryParse(H, out rectangleHeight))
         {
             IShape rec = new RectangleShape(rectangleWidth, rectangleHeight);

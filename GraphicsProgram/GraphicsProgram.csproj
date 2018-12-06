@@ -98,10 +98,10 @@
     <Compile Include="strategies\Circle\CircleLoopUserOperation.cs" />
     <Compile Include="strategies\Circle\CircleRepeatOperation.cs" />
     <Compile Include="strategies\Circle\CircleBasicUserOperation.cs" />
-    <Compile Include="strategies\Square\SquareBasicUserOperation.cs" />
-    <Compile Include="strategies\Square\SquareIfUserOperation.cs" />
-    <Compile Include="strategies\Square\SquareLoopUserOperation.cs" />
-    <Compile Include="strategies\Square\SquareRepeatOperation.cs" />
+    <Compile Include="strategies\Rectangle\RectangleBasicUserOperation.cs" />
+    <Compile Include="strategies\Rectangle\RectangleIfUserOperation.cs" />
+    <Compile Include="strategies\Rectangle\RectangleLoopUserOperation.cs" />
+    <Compile Include="strategies\Rectangle\RectangleRepeatOperation.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

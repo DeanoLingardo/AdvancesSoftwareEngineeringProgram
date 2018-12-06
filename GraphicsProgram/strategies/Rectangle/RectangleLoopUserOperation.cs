@@ -3,11 +3,11 @@ using System.Drawing;
 using GraphicsProgram;
 using GraphicsProgram.Shapes;
 
-public class SquareRepeatOperation : IUserOperationStrategy
+public class RectangleLoopUserOperation : IUserOperationStrategy
 {
     public bool AppliesTo(string userOperationType, string shape)
     {
-        return userOperationType.Equals(OperationType.Repeat) && shape.Equals(ShapeType.Square);
+        return userOperationType.Equals(OperationType.Loop) && shape.Equals(ShapeType.Rectangle);
     }
 
     public void DoDrawing(Graphics g, IShape shape)

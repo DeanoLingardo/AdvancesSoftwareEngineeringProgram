@@ -28,7 +28,8 @@ namespace GraphicsProgram
 
             _userOperationStrategies = new List<IUserOperationStrategy>
             {
-                new CircleBasicUserOperation(),new SquareBasicUserOperation(),new CircleRepeatOperation()
+                new CircleBasicUserOperation(),new RectangleBasicUserOperation(),new CircleRepeatOperation(),
+                new RectangleRepeatOperation()
             };
 
         }
@@ -73,9 +74,13 @@ namespace GraphicsProgram
                 {
                     _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
                 }
-                else if (line.Contains("rectangle"))
+                if (line.Contains("rectangle"))
                 {
-                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Square)).DoDrawing(myPen, penPosition, g, line);
+                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Rectangle)).DoDrawing(myPen, penPosition, g, line);
+                }
+                if (line.Contains("rectangle") && line.Contains("repeat"))
+                {
+                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, ShapeType.Rectangle)).DoDrawing(myPen, penPosition, g, line);
                 }
                 else if (line.Contains("triangle"))
                 {
@@ -146,13 +151,12 @@ namespace GraphicsProgram
             //Save textbox contents to a text file
             SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 File.WriteAllText(saveFileDialog1.FileName, userinput.Text);
                 MessageBox.Show("Succesfully saved", "Saved Text File", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-           
-
+            }    
         }
 
         private void imageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -166,7 +170,6 @@ namespace GraphicsProgram
                 pictureBox1.Image.Save(saveFileDialog2.FileName);
                 MessageBox.Show("Succesfully saved", "Saved image File", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -183,6 +186,7 @@ namespace GraphicsProgram
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "Text files (*.txt)|*.txt";
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
