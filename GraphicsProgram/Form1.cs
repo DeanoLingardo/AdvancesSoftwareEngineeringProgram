@@ -37,8 +37,9 @@ namespace GraphicsProgram
 
             _userOperationStrategies = new List<IUserOperationStrategy>
             {
-                new CircleBasicUserOperation()
+                new CircleBasicUserOperation(),new SquareBasicUserOperation()
             };
+
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -65,7 +66,7 @@ namespace GraphicsProgram
             //String array to split multi line text input
             string[] textBoxLines = userinput.Lines;
 
-            string[] commands = new string[] { "repeat", "loop", "if", "basic"};
+            string[] commands = new string[] { "repeat", "loop", "if"};
                        
             //Input parsing, split multilines to single lines then split the single lines into an array
             foreach (string line in textBoxLines)
@@ -78,21 +79,7 @@ namespace GraphicsProgram
                 }
                 else if (line.Contains("rectangle"))
                 {
-                    var W = splitString[1];
-                    var H = splitString[2];
-                    if (double.TryParse(W, out rectangleWidth) && double.TryParse(H, out rectangleHeight))
-                    {
-                        IShape rec = new RectangleShape(rectangleWidth, rectangleHeight);
-                        
-                        float widthF = Convert.ToSingle(W);
-                        float heightF = Convert.ToSingle(H);
-
-                        g.DrawRectangle(myPen, penX, penY, widthF, heightF);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Rectangle Parse Error");
-                    }
+                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Square)).DoDrawing(myPen, penPosition, g, line);
                 }
                 else if (line.Contains("triangle"))
                 {

@@ -97,6 +97,7 @@
     <Compile Include="strategies\Circle\CircleLoopUserOperation.cs" />
     <Compile Include="strategies\Circle\CircleRepeatOperation.cs" />
     <Compile Include="strategies\Circle\CircleBasicUserOperation.cs" />
+    <Compile Include="strategies\Square\SquareBasicUserOperation.cs" />
     <Compile Include="strategies\Square\SquareIfUserOperation.cs" />
     <Compile Include="strategies\Square\SquareLoopUserOperation.cs" />
     <Compile Include="strategies\Square\SquareRepeatOperation.cs" />
