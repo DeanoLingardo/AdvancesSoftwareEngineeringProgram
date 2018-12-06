@@ -60,32 +60,14 @@ namespace GraphicsProgram
             string[] textBoxLines = userinput.Lines;
 
             string[] commands = new string[] { "repeat", "loop", "if"};
-                       
+            string[] shapes = new string[] { "circle", "rectangle"};
+
+
             //Input parsing, split multilines to single lines then split the single lines into an array
             foreach (string line in textBoxLines)
             {
                 var splitString = line.Split();
 
-                if (line.Contains("circle"))
-                {
-                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
-                }
-                if (line.Contains("circle") && line.Contains("repeat"))
-                {
-                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
-                }
-                if (line.Contains("rectangle"))
-                {
-                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Rectangle)).DoDrawing(myPen, penPosition, g, line);
-                }
-                if (line.Contains("rectangle") && line.Contains("repeat"))
-                {
-                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, ShapeType.Rectangle)).DoDrawing(myPen, penPosition, g, line);
-                }
-                if (line.Contains("triangle"))
-                {
-                    MessageBox.Show("Coming Soon!");
-                }
                 if (line == "Penup")
                 {
                     penStatus = true;
@@ -96,35 +78,65 @@ namespace GraphicsProgram
                     penStatus = false;
                     textBox4.BackColor = (Color.Green);
                 }
-                else if (line.Contains("move")&& pen.Enabled == false)
+
+                switch (penStatus)
                 {
-                    var x = splitString[1];
-                    var y = splitString[2];
-                    if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
-                    {
-                        pen.X = penX;
-                        pen.Y = penY;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Move Parse Error");
-                    }
+                    case true:                  
+                        if (line.Contains("move"))
+                        {
+                            var x = splitString[1];
+                            var y = splitString[2];
+                            if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
+                            {
+                                pen.X = penX;
+                                pen.Y = penY;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Move Parse Error");
+                            }
+                        }
+                        break;
+
+                    case false:
+                        if (line.Contains("circle"))
+                        {
+                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
+                        }
+                        if (line.Contains("circle") && line.Contains("repeat"))
+                        {
+                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
+                        }
+                        if (line.Contains("rectangle"))
+                        {
+                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Rectangle)).DoDrawing(myPen, penPosition, g, line);
+                        }
+                        if (line.Contains("rectangle") && line.Contains("repeat"))
+                        {
+                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, ShapeType.Rectangle)).DoDrawing(myPen, penPosition, g, line);
+                        }
+                        if (line.Contains("triangle"))
+                        {
+                            MessageBox.Show("Coming Soon!");
+                        }
+                        if (line.Contains("move"))
+                        {
+                            var x = splitString[1];
+                            var y = splitString[2];
+                            if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
+                            {
+                                g.DrawLine(myPen, 0, 0, penX, penY);
+                                penPosition.X = penX;
+                                penPosition.Y = penY;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Move Parse Error");
+                            }
+                        }
+                        break;
                 }
-                else if (line.Contains("move") && pen.Enabled)
-                {
-                    var x = splitString[1];
-                    var y = splitString[2];
-                    if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
-                    {
-                        pen.X = penX;
-                        pen.Y = penY;
-                        g.DrawRectangle(myPen, penX, penY, penX, penY);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Move Parse Error");
-                    }
-                }
+              
             }
         }
 
