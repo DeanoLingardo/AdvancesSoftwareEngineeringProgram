@@ -82,17 +82,19 @@ namespace GraphicsProgram
                 {
                     _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, ShapeType.Rectangle)).DoDrawing(myPen, penPosition, g, line);
                 }
-                else if (line.Contains("triangle"))
+                if (line.Contains("triangle"))
                 {
                     MessageBox.Show("Coming Soon!");
                 }
-                else if (line == "Penup")
+                if (line == "Penup")
                 {
                     penStatus = true;
+                    textBox4.BackColor = (Color.Red);
                 }
-                else if (line == "Pendown")
+                if (line == "Pendown")
                 {
                     penStatus = false;
+                    textBox4.BackColor = (Color.Green);
                 }
                 else if (line.Contains("move")&& pen.Enabled == false)
                 {
