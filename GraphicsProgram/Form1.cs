@@ -1,16 +1,9 @@
-﻿using GraphicsProgram.Shapes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using RectangleShape = GraphicsProgram.Shapes.RectangleShape;
 
 namespace GraphicsProgram
 {
@@ -22,11 +15,9 @@ namespace GraphicsProgram
 
         private IEnumerable<IUserOperationStrategy> _userOperationStrategies;
 
-        double circleRadius;
-        double rectangleWidth;
-        double rectangleHeight;
         int penX;
         int penY;
+        bool penStatus;
 
         public InitialTestForm()
         {
@@ -37,7 +28,7 @@ namespace GraphicsProgram
 
             _userOperationStrategies = new List<IUserOperationStrategy>
             {
-                new CircleBasicUserOperation(),new SquareBasicUserOperation()
+                new CircleBasicUserOperation(),new SquareBasicUserOperation(),new CircleRepeatOperation()
             };
 
         }
@@ -59,6 +50,7 @@ namespace GraphicsProgram
             var penPosition = new PenPosition();
             penPosition.X = penX;
             penPosition.Y = penY;
+            penPosition.Enabled = penStatus;
 
             textBox3.Text = penPosition.GetXAsString();
             textBox2.Text = penPosition.GetYAsString();
@@ -77,6 +69,10 @@ namespace GraphicsProgram
                 {
                     _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
                 }
+                if (line.Contains("circle") && line.Contains("repeat"))
+                {
+                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
+                }
                 else if (line.Contains("rectangle"))
                 {
                     _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Square)).DoDrawing(myPen, penPosition, g, line);
@@ -87,11 +83,11 @@ namespace GraphicsProgram
                 }
                 else if (line == "Penup")
                 {
-                    pen.Enabled = true;
+                    penStatus = true;
                 }
                 else if (line == "Pendown")
                 {
-                    pen.Enabled = false;
+                    penStatus = false;
                 }
                 else if (line.Contains("move")&& pen.Enabled == false)
                 {

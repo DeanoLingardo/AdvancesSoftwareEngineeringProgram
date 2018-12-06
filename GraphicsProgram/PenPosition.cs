@@ -17,6 +17,11 @@
         {
             return Y.ToString();
         }
+
+        public bool GetPenStatus()
+        {
+            return Enabled;
+        }
     }
 
 }

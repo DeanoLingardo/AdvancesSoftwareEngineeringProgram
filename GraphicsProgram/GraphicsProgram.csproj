@@ -78,6 +78,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandParser.cs" />
     <Compile Include="IUserOperationStrategy.cs" />
     <Compile Include="OperationType.cs" />
     <Compile Include="PenPosition.cs" />
