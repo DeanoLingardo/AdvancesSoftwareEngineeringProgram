@@ -14,38 +14,34 @@ public class CircleRepeatOperation : IUserOperationStrategy
     public void DoDrawing(Pen pen, PenPosition penPosition, Graphics g, string line)
     {
         var split = line.Split();
-        double circleRadius;
         string Operator;
         int repeatSize = 5;
-        int AmountOfRepition;
 
 
-        int.TryParse(split[4], out AmountOfRepition);
+        int.TryParse(split[4], out int AmountOfRepition);
         Operator = split[3];
-        double.TryParse(split[2], out circleRadius);
+        double.TryParse(split[2], out double circleRadius);
 
         IShape circle = new CircleShape(circleRadius);
 
         double diameter = circle.GetDiameter();
         float diameterF = Convert.ToSingle(diameter);
-
-        float update()
-        {
-           return diameterF + 5;         
-        }
         
         if (Operator == "+")
         {
             for (int i = 0; i < AmountOfRepition; i++)
             {
                 g.DrawEllipse(pen, penPosition.X, penPosition.Y, diameterF, diameterF);
-                update();
+                diameterF += repeatSize;
             }
         }
-        else if (Operator == "-")
+        if (Operator == "-")
         {
-            g.DrawEllipse(pen, penPosition.X, penPosition.Y, diameterF, diameterF);
-            g.DrawEllipse(pen, penPosition.X, penPosition.Y, diameterF - repeatSize, diameterF - repeatSize);
+            for (int i = 0; i < AmountOfRepition; i++)
+            {
+                g.DrawEllipse(pen, penPosition.X, penPosition.Y, diameterF, diameterF);
+                diameterF -= repeatSize;
+            }
         }
     }
 }
