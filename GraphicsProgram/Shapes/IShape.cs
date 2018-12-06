@@ -7,5 +7,9 @@
         double GetDiameter();
 
         double GetCircumference();
+
+        double GetWidth();
+
+        double GetHeight();
     }
 }

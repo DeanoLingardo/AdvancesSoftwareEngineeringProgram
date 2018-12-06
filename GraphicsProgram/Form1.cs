@@ -65,7 +65,7 @@ namespace GraphicsProgram
             //String array to split multi line text input
             string[] textBoxLines = userinput.Lines;
 
-            string[] commands = new string[] { "repeat", "loop", "if" };
+            string[] commands = new string[] { "repeat", "loop", "if", "basic"};
                        
             //Input parsing, split multilines to single lines then split the single lines into an array
             foreach (string line in textBoxLines)
@@ -74,7 +74,7 @@ namespace GraphicsProgram
 
                 if (line.Contains("circle"))
                 {
-                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.If, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
+                    _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
                 }
                 else if (line.Contains("rectangle"))
                 {

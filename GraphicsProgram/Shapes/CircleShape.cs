@@ -26,5 +26,15 @@
         {
             return (2 * PI) * radius;
         }
+
+        public double GetWidth()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public double GetHeight()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

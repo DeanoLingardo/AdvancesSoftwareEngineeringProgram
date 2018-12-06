@@ -16,6 +16,16 @@
             return width * height;
         }
 
+        public double GetWidth()
+        {
+            return width;
+        }
+
+        public double GetHeight()
+        {
+            return height;
+        }
+
         public double GetDiameter()
         {
             throw new System.NotImplementedException();
