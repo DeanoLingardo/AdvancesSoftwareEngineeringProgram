@@ -37,7 +37,7 @@ namespace GraphicsProgram
 
             _userOperationStrategies = new List<IUserOperationStrategy>
             {
-                new CircleIfUserOperation()
+                new CircleBasicUserOperation()
             };
         }
 
