@@ -219,6 +219,22 @@ namespace GraphicsProgram
                 }
             }
         }
+
+        private void InitialTestForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            g.Clear(Color.WhiteSmoke);
+            userinput.Clear();
+        }
     }
 }
 // ______  _______ _______ __   _             _____ __   _  ______ _______  ______ ______                     

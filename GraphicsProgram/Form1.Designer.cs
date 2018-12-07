@@ -31,11 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialTestForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.userinput = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.meniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.textFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.commandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.penUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.penDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,22 +71,25 @@
             this.label6 = new System.Windows.Forms.Label();
             this.colorDialog4 = new System.Windows.Forms.ColorDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.imageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.textFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userinput = new System.Windows.Forms.TextBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.LightGray;
+            this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(682, 122);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
@@ -91,28 +97,6 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // userinput
-            // 
-            this.userinput.AutoCompleteCustomSource.AddRange(new string[] {
-            "cirlce",
-            "rectangle",
-            "move",
-            "line",
-            "triangle"});
-            this.userinput.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.userinput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.userinput.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userinput.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.userinput.Location = new System.Drawing.Point(38, 122);
-            this.userinput.Margin = new System.Windows.Forms.Padding(4);
-            this.userinput.Multiline = true;
-            this.userinput.Name = "userinput";
-            this.userinput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.userinput.Size = new System.Drawing.Size(565, 702);
-            this.userinput.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.userinput, "Use this box to enter commands!");
-            this.userinput.WordWrap = false;
             // 
             // menuStrip1
             // 
@@ -131,8 +115,10 @@
             // meniToolStripMenuItem
             // 
             this.meniToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem});
+            this.meniToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.meniToolStripMenuItem.Name = "meniToolStripMenuItem";
             this.meniToolStripMenuItem.Size = new System.Drawing.Size(90, 38);
             this.meniToolStripMenuItem.Text = "Menu";
@@ -142,19 +128,53 @@
             this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.imageToolStripMenuItem1,
             this.textFileToolStripMenuItem});
+            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.openToolStripMenuItem.Text = "Open";
+            // 
+            // imageToolStripMenuItem1
+            // 
+            this.imageToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("imageToolStripMenuItem1.Image")));
+            this.imageToolStripMenuItem1.Name = "imageToolStripMenuItem1";
+            this.imageToolStripMenuItem1.Size = new System.Drawing.Size(324, 38);
+            this.imageToolStripMenuItem1.Text = "Image";
+            this.imageToolStripMenuItem1.Click += new System.EventHandler(this.imageToolStripMenuItem1_Click);
+            // 
+            // textFileToolStripMenuItem
+            // 
+            this.textFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("textFileToolStripMenuItem.Image")));
+            this.textFileToolStripMenuItem.Name = "textFileToolStripMenuItem";
+            this.textFileToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.textFileToolStripMenuItem.Text = "Text File";
+            this.textFileToolStripMenuItem.Click += new System.EventHandler(this.textFileToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.imageToolStripMenuItem,
             this.textboxToolStripMenuItem});
+            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // imageToolStripMenuItem
+            // 
+            this.imageToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("imageToolStripMenuItem.Image")));
+            this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
+            this.imageToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.imageToolStripMenuItem.Text = "Image";
+            this.imageToolStripMenuItem.Click += new System.EventHandler(this.imageToolStripMenuItem_Click);
+            // 
+            // textboxToolStripMenuItem
+            // 
+            this.textboxToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("textboxToolStripMenuItem.Image")));
+            this.textboxToolStripMenuItem.Name = "textboxToolStripMenuItem";
+            this.textboxToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.textboxToolStripMenuItem.Text = "Textbox";
+            this.textboxToolStripMenuItem.Click += new System.EventHandler(this.textboxToolStripMenuItem_Click);
             // 
             // commandsToolStripMenuItem
             // 
@@ -172,37 +192,37 @@
             // penUpToolStripMenuItem
             // 
             this.penUpToolStripMenuItem.Name = "penUpToolStripMenuItem";
-            this.penUpToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.penUpToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.penUpToolStripMenuItem.Text = "PenUp";
             // 
             // penDownToolStripMenuItem
             // 
             this.penDownToolStripMenuItem.Name = "penDownToolStripMenuItem";
-            this.penDownToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.penDownToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.penDownToolStripMenuItem.Text = "PenDown";
             // 
             // rectanglewhToolStripMenuItem
             // 
             this.rectanglewhToolStripMenuItem.Name = "rectanglewhToolStripMenuItem";
-            this.rectanglewhToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.rectanglewhToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.rectanglewhToolStripMenuItem.Text = "Rectangle (W,H)";
             // 
             // circleRToolStripMenuItem
             // 
             this.circleRToolStripMenuItem.Name = "circleRToolStripMenuItem";
-            this.circleRToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.circleRToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.circleRToolStripMenuItem.Text = "Circle (R)";
             // 
             // traingleToolStripMenuItem
             // 
             this.traingleToolStripMenuItem.Name = "traingleToolStripMenuItem";
-            this.traingleToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.traingleToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.traingleToolStripMenuItem.Text = "Traingle";
             // 
             // movePenXYToolStripMenuItem
             // 
             this.movePenXYToolStripMenuItem.Name = "movePenXYToolStripMenuItem";
-            this.movePenXYToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
+            this.movePenXYToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.movePenXYToolStripMenuItem.Text = "MovePen(X,Y)";
             // 
             // helpToolStripMenuItem
@@ -216,12 +236,14 @@
             // 
             // fAQToolStripMenuItem
             // 
+            this.fAQToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("fAQToolStripMenuItem.Image")));
             this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
             this.fAQToolStripMenuItem.Size = new System.Drawing.Size(336, 38);
             this.fAQToolStripMenuItem.Text = "FAQ";
             // 
             // programInformationToolStripMenuItem
             // 
+            this.programInformationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("programInformationToolStripMenuItem.Image")));
             this.programInformationToolStripMenuItem.Name = "programInformationToolStripMenuItem";
             this.programInformationToolStripMenuItem.Size = new System.Drawing.Size(336, 38);
             this.programInformationToolStripMenuItem.Text = "Program Information";
@@ -365,9 +387,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Controls";
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.splitContainer1);
             this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -399,42 +426,52 @@
             // 
             this.saveFileDialog1.DefaultExt = "txt";
             // 
-            // imageToolStripMenuItem
-            // 
-            this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
-            this.imageToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
-            this.imageToolStripMenuItem.Text = "Image";
-            this.imageToolStripMenuItem.Click += new System.EventHandler(this.imageToolStripMenuItem_Click);
-            // 
-            // textboxToolStripMenuItem
-            // 
-            this.textboxToolStripMenuItem.Name = "textboxToolStripMenuItem";
-            this.textboxToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
-            this.textboxToolStripMenuItem.Text = "Textbox";
-            this.textboxToolStripMenuItem.Click += new System.EventHandler(this.textboxToolStripMenuItem_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // imageToolStripMenuItem1
+            // userinput
             // 
-            this.imageToolStripMenuItem1.Name = "imageToolStripMenuItem1";
-            this.imageToolStripMenuItem1.Size = new System.Drawing.Size(324, 38);
-            this.imageToolStripMenuItem1.Text = "Image";
-            this.imageToolStripMenuItem1.Click += new System.EventHandler(this.imageToolStripMenuItem1_Click);
+            this.userinput.AutoCompleteCustomSource.AddRange(new string[] {
+            "cirlce",
+            "rectangle",
+            "move",
+            "line",
+            "triangle"});
+            this.userinput.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.userinput.BackColor = System.Drawing.Color.Silver;
+            this.userinput.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userinput.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.userinput.Location = new System.Drawing.Point(38, 122);
+            this.userinput.Margin = new System.Windows.Forms.Padding(4);
+            this.userinput.Multiline = true;
+            this.userinput.Name = "userinput";
+            this.userinput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.userinput.Size = new System.Drawing.Size(565, 702);
+            this.userinput.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.userinput, "Use this box to enter commands!");
+            this.userinput.WordWrap = false;
             // 
-            // textFileToolStripMenuItem
+            // splitContainer1
             // 
-            this.textFileToolStripMenuItem.Name = "textFileToolStripMenuItem";
-            this.textFileToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
-            this.textFileToolStripMenuItem.Text = "Text File";
-            this.textFileToolStripMenuItem.Click += new System.EventHandler(this.textFileToolStripMenuItem_Click);
+            this.splitContainer1.Location = new System.Drawing.Point(-32, -1096);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Size = new System.Drawing.Size(2564, 1342);
+            this.splitContainer1.SplitterDistance = 854;
+            this.splitContainer1.TabIndex = 38;
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // InitialTestForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -443,10 +480,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.userinput);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.userinput);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -456,6 +493,7 @@
             this.Name = "InitialTestForm";
             this.Text = "Introduction to programming";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.InitialTestForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -464,6 +502,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,7 +512,6 @@
 
         #endregion
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox userinput;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem meniToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -515,6 +554,9 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem textFileToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox userinput;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
     }
 }
 

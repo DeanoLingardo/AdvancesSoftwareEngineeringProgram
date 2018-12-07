@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Windows;
 using GraphicsProgram;
 using GraphicsProgram.Shapes;
 
