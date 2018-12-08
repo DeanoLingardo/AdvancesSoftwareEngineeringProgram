@@ -99,22 +99,18 @@ namespace GraphicsProgram
                         break;
 
                     case false:
-                        if (line.Contains("circle"))
+                        if (shapes.Any(line.StartsWith))
                         {
-                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
+                            var shape = splitString[0];
+                           _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, shape)).DoDrawing(myPen, penPosition, g, line);
                         }
-                        if (line.Contains("circle") && line.Contains("repeat"))
+                        else if (commands.Any(line.StartsWith))
                         {
-                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, ShapeType.Circle)).DoDrawing(myPen, penPosition, g, line);
+                            var shape = splitString[1];
+                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, shape)).DoDrawing(myPen, penPosition, g, line);
                         }
-                        if (line.Contains("rectangle"))
-                        {
-                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, ShapeType.Rectangle)).DoDrawing(myPen, penPosition, g, line);
-                        }
-                        if (line.Contains("rectangle") && line.Contains("repeat"))
-                        {
-                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, ShapeType.Rectangle)).DoDrawing(myPen, penPosition, g, line);
-                        }
+
+
                         if (line.Contains("triangle"))
                         {
                             MessageBox.Show("Coming Soon!");
