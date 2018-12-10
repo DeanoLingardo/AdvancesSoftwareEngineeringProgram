@@ -108,7 +108,7 @@
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2564, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(2564, 42);
             this.menuStrip1.TabIndex = 22;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -185,6 +185,7 @@
             this.circleRToolStripMenuItem,
             this.traingleToolStripMenuItem,
             this.movePenXYToolStripMenuItem});
+            this.commandsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.commandsToolStripMenuItem.Name = "commandsToolStripMenuItem";
             this.commandsToolStripMenuItem.Size = new System.Drawing.Size(148, 38);
             this.commandsToolStripMenuItem.Text = "Commands";
@@ -230,6 +231,7 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fAQToolStripMenuItem,
             this.programInformationToolStripMenuItem});
+            this.helpToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 38);
             this.helpToolStripMenuItem.Text = "Help";
@@ -250,6 +252,7 @@
             // 
             // exitToolStripMenuItem
             // 
+            this.exitToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(64, 38);
             this.exitToolStripMenuItem.Text = "Exit";
