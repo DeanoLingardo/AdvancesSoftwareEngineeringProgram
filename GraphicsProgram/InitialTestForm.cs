@@ -43,12 +43,6 @@ namespace GraphicsProgram
             g.Clear(Color.White);
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Goodbye!");
-            Application.Exit();
-        }
-
         private void runbutton_Click(object sender, EventArgs e)
         {
             //Update X & Y coordinate text fields on run command
@@ -288,6 +282,14 @@ namespace GraphicsProgram
             {
                 // Set form background to the selected color.
                 myPen.Color = colorDialog1.Color;
+            }
+        }
+
+        private void exitApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure?", "Closing Application...", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
+            {
+                Application.Exit();
             }
         }
     }
