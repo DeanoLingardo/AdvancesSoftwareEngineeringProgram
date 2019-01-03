@@ -236,6 +236,7 @@ namespace GraphicsProgram
         {
             g.Clear(Color.WhiteSmoke);
             userinput.Clear();
+            SingleLineUserInput.Clear();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -276,6 +277,18 @@ namespace GraphicsProgram
         private void programInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Use Commands tab to see the list of available commands!", "Need Help?", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void penColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Show the color dialog.
+            DialogResult result = colorDialog1.ShowDialog();
+            // See if user pressed ok.
+            if (result == DialogResult.OK)
+            {
+                // Set form background to the selected color.
+                myPen.Color = colorDialog1.Color;
+            }
         }
     }
     }

@@ -47,6 +47,7 @@
             this.circleRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.traingleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movePenXYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colourPickerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,6 +82,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.penColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -111,6 +113,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.meniToolStripMenuItem,
             this.commandsToolStripMenuItem,
+            this.colourPickerToolStripMenuItem,
             this.helpToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -240,6 +243,14 @@
             this.movePenXYToolStripMenuItem.Name = "movePenXYToolStripMenuItem";
             this.movePenXYToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.movePenXYToolStripMenuItem.Text = "MovePen(X,Y)";
+            // 
+            // colourPickerToolStripMenuItem
+            // 
+            this.colourPickerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.penColorToolStripMenuItem});
+            this.colourPickerToolStripMenuItem.Name = "colourPickerToolStripMenuItem";
+            this.colourPickerToolStripMenuItem.Size = new System.Drawing.Size(88, 38);
+            this.colourPickerToolStripMenuItem.Text = "Extras";
             // 
             // helpToolStripMenuItem
             // 
@@ -522,7 +533,7 @@
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.SingleLineUserInput);
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.groupBox4.Location = new System.Drawing.Point(41, 82);
+            this.groupBox4.Location = new System.Drawing.Point(41, 122);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(565, 296);
             this.groupBox4.TabIndex = 39;
@@ -540,6 +551,13 @@
             this.button2.Text = "CLEAR INPUT";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // penColorToolStripMenuItem
+            // 
+            this.penColorToolStripMenuItem.Name = "penColorToolStripMenuItem";
+            this.penColorToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.penColorToolStripMenuItem.Text = "Pen Color ";
+            this.penColorToolStripMenuItem.Click += new System.EventHandler(this.penColorToolStripMenuItem_Click);
             // 
             // InitialTestForm
             // 
@@ -638,5 +656,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem colourPickerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem penColorToolStripMenuItem;
     }
 }
