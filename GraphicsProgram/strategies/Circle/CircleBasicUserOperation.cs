@@ -13,9 +13,8 @@ public class CircleBasicUserOperation : IUserOperationStrategy
     public void DoDrawing(Pen pen, PenPosition penPosition, Graphics g, string line)
     {
         var split = line.Split();
-        double circleRadius;
 
-        double.TryParse(split[1], out circleRadius);
+        double.TryParse(split[1], out var circleRadius);
 
         IShape circle = new CircleShape(circleRadius);
 

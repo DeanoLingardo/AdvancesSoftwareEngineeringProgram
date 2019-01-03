@@ -13,7 +13,12 @@ namespace GraphicsProgram
         private Pen myPen = new Pen(Color.Black, 2);
         private PenPosition pen = new PenPosition();
 
-        private IEnumerable<IUserOperationStrategy> _userOperationStrategies;
+
+        string[] commands = new string[] { "repeat", "loop", "if" };
+        string[] shapes = new string[] { "circle", "rectangle" };
+
+
+        private readonly IEnumerable<IUserOperationStrategy> _userOperationStrategies;
 
         int penX;
         int penY;
@@ -31,7 +36,6 @@ namespace GraphicsProgram
                 new CircleBasicUserOperation(),new RectangleBasicUserOperation(),new CircleRepeatOperation(),
                 new RectangleRepeatOperation()
             };
-
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -47,36 +51,36 @@ namespace GraphicsProgram
 
         private void runbutton_Click(object sender, EventArgs e)
         {
-            //Update X & Y coardinte text fields on run command
-            var penPosition = new PenPosition();
-            penPosition.X = penX;
-            penPosition.Y = penY;
-            penPosition.Enabled = penStatus;
+            //Update X & Y coordinate text fields on run command
+            var penPosition = new PenPosition
+            {
+                X = penX,
+                Y = penY,
+                Enabled = penStatus
+            };
 
             textBox3.Text = penPosition.GetXAsString();
             textBox2.Text = penPosition.GetYAsString();
             
             //String array to split multi line text input
-            string[] textBoxLines = userinput.Lines;
-
-            string[] commands = new string[] { "repeat", "loop", "if"};
-            string[] shapes = new string[] { "circle", "rectangle"};
+            var textBoxLines = userinput.Lines;
 
 
-            //Input parsing, split multilines to single lines then split the single lines into an array
-            foreach (string line in textBoxLines)
+            //Input parsing, split multiline to single lines then split the single lines into an array
+            foreach (var line in textBoxLines)
             {
                 var splitString = line.Split();
 
-                if (line == "Penup")
+                switch (line)
                 {
-                    penStatus = true;
-                    textBox4.BackColor = (Color.Red);
-                }
-                if (line == "Pendown")
-                {
-                    penStatus = false;
-                    textBox4.BackColor = (Color.Green);
+                    case "Penup":
+                        penStatus = true;
+                        textBox4.BackColor = (Color.Red);
+                        break;
+                    case "Pendown":
+                        penStatus = false;
+                        textBox4.BackColor = (Color.Green);
+                        break;
                 }
 
                 switch (penStatus)
@@ -159,7 +163,7 @@ namespace GraphicsProgram
         private void textboxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Save textbox contents to a text file
-            SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
+            var SaveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -171,12 +175,12 @@ namespace GraphicsProgram
 
         private void imageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog SaveFileDialog2 = new SaveFileDialog();
+            var SaveFileDialog2 = new SaveFileDialog();
             SaveFileDialog2.Filter = "Bitmap files (*.bmp)|*.bmp|JPG files (*.jpg)|*.jpg|GIF files(*.gif) | *.gif | All files(*.*) | *.* ";;
 
             if (saveFileDialog2.ShowDialog() == DialogResult.OK)
             {
-                string fName = saveFileDialog2.FileName;
+                var fName = saveFileDialog2.FileName;
                 pictureBox1.Image.Save(saveFileDialog2.FileName);
                 MessageBox.Show("Succesfully saved", "Saved image File", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -194,17 +198,19 @@ namespace GraphicsProgram
 
         private void textFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Text files (*.txt)|*.txt";
+            var openFileDialog1 = new OpenFileDialog
+            {
+                Filter = "Text files (*.txt)|*.txt"
+            };
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
                 {   // Open the text file using a stream reader.
-                    using (StreamReader sr = new StreamReader(openFileDialog1.FileName))
+                    using (var sr = new StreamReader(openFileDialog1.FileName))
                     {
                         // Read the stream to a string, and write the string to the textbox.
-                        String line = sr.ReadToEnd();
+                        var line = sr.ReadToEnd();
                         userinput.Text = line;
                         MessageBox.Show("Text succefully written", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -231,8 +237,51 @@ namespace GraphicsProgram
             g.Clear(Color.WhiteSmoke);
             userinput.Clear();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //Update X & Y coordinate text fields on run command
+            var penPosition = new PenPosition
+            {
+                X = penX,
+                Y = penY,
+                Enabled = penStatus
+            };
+
+            textBox3.Text = penPosition.GetXAsString();
+            textBox2.Text = penPosition.GetYAsString();
+
+            var SingletextBoxLines = SingleLineUserInput.Text;
+            var splitString = SingletextBoxLines.Split();
+
+            if (shapes.Any(SingletextBoxLines.StartsWith))
+            {
+                var shape = splitString[0];
+                _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, shape)).DoDrawing(myPen, penPosition, g, SingletextBoxLines);
+            }
+            else if (commands.Any(SingletextBoxLines.StartsWith))
+            {
+                var shape = splitString[1];
+                _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, shape)).DoDrawing(myPen, penPosition, g, SingletextBoxLines);
+            }
+
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            SingleLineUserInput.Clear();
+        }
+
+        private void programInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Use Commands tab to see the list of available commands!", "Need Help?", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
-}
+    }
+    
+    
+
 // ______  _______ _______ __   _             _____ __   _  ______ _______  ______ ______                     
 // |     \ |______ |_____| | \  |      |        |   | \  | |  ____ |_____| |_____/ |     \                    
 // |_____/ |______ |     | |  \_|      |_____ __|__ |  \_| |_____| |     | |    \_ |_____/                    
