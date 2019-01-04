@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphicsProgram.strategies.Triangle;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -30,11 +31,16 @@ namespace GraphicsProgram
             Width = 1000;
             Height = 500;
             g = pictureBox1.CreateGraphics();
+            pencolorstatus.BackColor = myPen.Color;
+
 
             _userOperationStrategies = new List<IUserOperationStrategy>
             {
-                new CircleBasicUserOperation(),new RectangleBasicUserOperation(),new CircleRepeatOperation(),
-                new RectangleRepeatOperation()
+                new CircleBasicUserOperation(),
+                new RectangleBasicUserOperation(),
+                new CircleRepeatOperation(),
+                new RectangleRepeatOperation(),
+                new TriangleBasicUserOperation()
             };
         }
 
@@ -107,12 +113,7 @@ namespace GraphicsProgram
                             var shape = splitString[1];
                             _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, shape)).DoDrawing(myPen, penPosition, g, line);
                         }
-
-
-                        if (line.Contains("triangle"))
-                        {
-                            MessageBox.Show("Coming Soon!");
-                        }
+                    
                         if (line.Contains("move"))
                         {
                             var x = splitString[1];
@@ -259,7 +260,47 @@ namespace GraphicsProgram
                 var shape = splitString[1];
                 _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, shape)).DoDrawing(myPen, penPosition, g, SingletextBoxLines);
             }
+            if (SingletextBoxLines.Contains("polygon"))
+            {
+                // Create points that define polygon.
+                PointF point1 = new PointF(50.0F, 50.0F);
+                PointF point2 = new PointF(100.0F, 25.0F);
+                PointF point3 = new PointF(200.0F, 5.0F);
+                PointF point4 = new PointF(250.0F, 50.0F);
+                PointF point5 = new PointF(300.0F, 100.0F);
+                PointF point6 = new PointF(350.0F, 200.0F);
+                PointF point7 = new PointF(250.0F, 250.0F);
+                PointF[] curvePoints =
+                {
+                     point1,
+                     point2,
+                     point3,
+                     point4,
+                     point5,
+                     point6,
+                     point7
+                };
 
+                // Draw polygon curve to screen.
+                g.DrawPolygon(myPen, curvePoints);
+            }
+            if (SingletextBoxLines.Contains("triangle"))
+            {
+                // Create points that define polygon.
+                PointF point1 = new PointF(50.0F, 50.0F);
+                PointF point2 = new PointF(100.0F, 25.0F);
+                PointF point3 = new PointF(200.0F, 50.0F);
+
+                PointF[] curvePoints =
+                         {
+                                         point1,
+                                         point2,
+                                         point3,
+                                     };
+
+                // Draw polygon curve to screen.
+                g.DrawPolygon(myPen, curvePoints);
+            }
 
         }
 
@@ -277,11 +318,12 @@ namespace GraphicsProgram
         {
             // Show the color dialog.
             DialogResult result = colorDialog1.ShowDialog();
-            // See if user pressed ok.
+            
             if (result == DialogResult.OK)
             {
                 // Set form background to the selected color.
                 myPen.Color = colorDialog1.Color;
+                pencolorstatus.BackColor = colorDialog1.Color;
             }
         }
 
@@ -291,8 +333,8 @@ namespace GraphicsProgram
             {
                 Application.Exit();
             }
-        }
-    }
+        }  
+      }
     }
     
     

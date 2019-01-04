@@ -7,16 +7,13 @@ using System.Windows.Forms;
 
 namespace GraphicsProgram
 {
-    class CommandParser 
+    public class CommandParser 
     {
         public string Operation { get; set; }
         public string Shape { get; set; }
-        public bool IsVerified { get; private set; }
-    
+        public bool IsVerified { get;  set; }
+        public bool IsSingle { get; set; }
 
-
-        string[] commands = new string[] { "repeat", "loop", "if"};
-        string[] shapes = new string[] { "circle", "rectangle"};
 
         public CommandParser(string operation, string shape)
         {
@@ -38,5 +35,12 @@ namespace GraphicsProgram
         {
             return IsVerified;
         }
+        
+        public bool SingleLine()
+        {
+            return IsSingle;
+        }
+
+        
     }
 }

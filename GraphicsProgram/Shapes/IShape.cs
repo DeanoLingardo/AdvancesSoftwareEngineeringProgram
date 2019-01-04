@@ -11,5 +11,7 @@
         double GetWidth();
 
         double GetHeight();
+
+        float GetPoints();
     }
 }

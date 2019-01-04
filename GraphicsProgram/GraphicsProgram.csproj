@@ -88,8 +88,10 @@
     <Compile Include="InitialTestForm.Designer.cs">
       <DependentUpon>InitialTestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Points.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShapePoints.cs" />
     <Compile Include="Shapes\CircleShape.cs" />
     <Compile Include="Shapes\IShape.cs" />
     <Compile Include="Shapes\RectangleShape.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="strategies\Rectangle\RectangleIfUserOperation.cs" />
     <Compile Include="strategies\Rectangle\RectangleLoopUserOperation.cs" />
     <Compile Include="strategies\Rectangle\RectangleRepeatOperation.cs" />
+    <Compile Include="strategies\Triangle\TriangleBasicUserOperation.cs" />
     <EmbeddedResource Include="InitialTestForm.resx">
       <DependentUpon>InitialTestForm.cs</DependentUpon>
     </EmbeddedResource>

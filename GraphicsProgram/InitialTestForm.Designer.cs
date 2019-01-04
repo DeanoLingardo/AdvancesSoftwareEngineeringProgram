@@ -72,9 +72,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pencolorstatus = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.colorDialog4 = new System.Windows.Forms.ColorDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
@@ -88,8 +90,6 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,7 +117,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2564, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(2564, 40);
             this.menuStrip1.TabIndex = 22;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -130,14 +130,14 @@
             this.exitApplicationToolStripMenuItem});
             this.meniToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.meniToolStripMenuItem.Name = "meniToolStripMenuItem";
-            this.meniToolStripMenuItem.Size = new System.Drawing.Size(90, 38);
+            this.meniToolStripMenuItem.Size = new System.Drawing.Size(90, 36);
             this.meniToolStripMenuItem.Text = "Menu";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(278, 38);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -148,7 +148,7 @@
             this.textFileToolStripMenuItem});
             this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(278, 38);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // imageToolStripMenuItem1
@@ -174,7 +174,7 @@
             this.textboxToolStripMenuItem});
             this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(278, 38);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -198,7 +198,7 @@
             // 
             this.exitApplicationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exitApplicationToolStripMenuItem.Image")));
             this.exitApplicationToolStripMenuItem.Name = "exitApplicationToolStripMenuItem";
-            this.exitApplicationToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.exitApplicationToolStripMenuItem.Size = new System.Drawing.Size(278, 38);
             this.exitApplicationToolStripMenuItem.Text = "Exit Application";
             this.exitApplicationToolStripMenuItem.Click += new System.EventHandler(this.exitApplicationToolStripMenuItem_Click);
             // 
@@ -213,41 +213,47 @@
             this.movePenXYToolStripMenuItem});
             this.commandsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.commandsToolStripMenuItem.Name = "commandsToolStripMenuItem";
-            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(148, 38);
+            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(148, 36);
             this.commandsToolStripMenuItem.Text = "Commands";
             // 
             // penUpToolStripMenuItem
             // 
+            this.penUpToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("penUpToolStripMenuItem.Image")));
             this.penUpToolStripMenuItem.Name = "penUpToolStripMenuItem";
             this.penUpToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.penUpToolStripMenuItem.Text = "PenUp";
             // 
             // penDownToolStripMenuItem
             // 
+            this.penDownToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("penDownToolStripMenuItem.Image")));
             this.penDownToolStripMenuItem.Name = "penDownToolStripMenuItem";
             this.penDownToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.penDownToolStripMenuItem.Text = "PenDown";
             // 
             // rectanglewhToolStripMenuItem
             // 
+            this.rectanglewhToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("rectanglewhToolStripMenuItem.Image")));
             this.rectanglewhToolStripMenuItem.Name = "rectanglewhToolStripMenuItem";
             this.rectanglewhToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.rectanglewhToolStripMenuItem.Text = "Rectangle (W,H)";
             // 
             // circleRToolStripMenuItem
             // 
+            this.circleRToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("circleRToolStripMenuItem.Image")));
             this.circleRToolStripMenuItem.Name = "circleRToolStripMenuItem";
             this.circleRToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.circleRToolStripMenuItem.Text = "Circle (R)";
             // 
             // traingleToolStripMenuItem
             // 
+            this.traingleToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("traingleToolStripMenuItem.Image")));
             this.traingleToolStripMenuItem.Name = "traingleToolStripMenuItem";
             this.traingleToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.traingleToolStripMenuItem.Text = "Traingle";
             // 
             // movePenXYToolStripMenuItem
             // 
+            this.movePenXYToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("movePenXYToolStripMenuItem.Image")));
             this.movePenXYToolStripMenuItem.Name = "movePenXYToolStripMenuItem";
             this.movePenXYToolStripMenuItem.Size = new System.Drawing.Size(283, 38);
             this.movePenXYToolStripMenuItem.Text = "MovePen(X,Y)";
@@ -258,11 +264,12 @@
             this.penColorToolStripMenuItem});
             this.colourPickerToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.colourPickerToolStripMenuItem.Name = "colourPickerToolStripMenuItem";
-            this.colourPickerToolStripMenuItem.Size = new System.Drawing.Size(88, 38);
+            this.colourPickerToolStripMenuItem.Size = new System.Drawing.Size(88, 36);
             this.colourPickerToolStripMenuItem.Text = "Extras";
             // 
             // penColorToolStripMenuItem
             // 
+            this.penColorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("penColorToolStripMenuItem.Image")));
             this.penColorToolStripMenuItem.Name = "penColorToolStripMenuItem";
             this.penColorToolStripMenuItem.Size = new System.Drawing.Size(224, 38);
             this.penColorToolStripMenuItem.Text = "Pen Color ";
@@ -275,7 +282,7 @@
             this.programInformationToolStripMenuItem});
             this.helpToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 38);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 36);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // fAQToolStripMenuItem
@@ -310,6 +317,7 @@
             // clearscreenbutton
             // 
             this.clearscreenbutton.BackColor = System.Drawing.Color.Transparent;
+            this.clearscreenbutton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.clearscreenbutton.ForeColor = System.Drawing.Color.Black;
             this.clearscreenbutton.Location = new System.Drawing.Point(41, 1400);
             this.clearscreenbutton.Name = "clearscreenbutton";
@@ -469,9 +477,11 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.pencolorstatus);
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.splitContainer1);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.groupBox3.Location = new System.Drawing.Point(41, 1134);
             this.groupBox3.Name = "groupBox3";
@@ -480,12 +490,39 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PEN STATUS";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(317, 38);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 35);
+            this.label8.TabIndex = 41;
+            this.label8.Text = "Color:";
+            // 
+            // pencolorstatus
+            // 
+            this.pencolorstatus.Location = new System.Drawing.Point(411, 40);
+            this.pencolorstatus.Name = "pencolorstatus";
+            this.pencolorstatus.Size = new System.Drawing.Size(100, 31);
+            this.pencolorstatus.TabIndex = 40;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(41, 38);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(147, 35);
+            this.label7.TabIndex = 40;
+            this.label7.Text = "Up/Down:";
+            // 
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox4.Location = new System.Drawing.Point(50, 46);
+            this.textBox4.Location = new System.Drawing.Point(195, 40);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(464, 31);
+            this.textBox4.Size = new System.Drawing.Size(78, 31);
             this.textBox4.TabIndex = 37;
             // 
             // label6
@@ -496,13 +533,6 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 37);
             this.label6.TabIndex = 29;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Size = new System.Drawing.Size(150, 100);
-            this.splitContainer1.TabIndex = 38;
             // 
             // saveFileDialog1
             // 
@@ -595,8 +625,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
@@ -648,7 +676,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem textFileToolStripMenuItem;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TextBox userinput;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.Button button1;
@@ -659,5 +686,8 @@
         private System.Windows.Forms.ToolStripMenuItem colourPickerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem penColorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitApplicationToolStripMenuItem;
+        private System.Windows.Forms.TextBox pencolorstatus;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

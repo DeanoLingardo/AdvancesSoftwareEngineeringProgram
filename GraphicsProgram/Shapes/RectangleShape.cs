@@ -35,5 +35,10 @@
         {
             throw new System.NotImplementedException();
         }
+
+        public float GetPoints()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
