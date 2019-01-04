@@ -11,5 +11,7 @@ namespace GraphicsProgram
         public Points A { get; set; }
         public Points B { get; set; }
         public Points C { get; set; }
+        public Points D { get; set; }
+        public Points E { get; set; }
     }
 }
