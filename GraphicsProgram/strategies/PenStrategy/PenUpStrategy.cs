@@ -1,9 +1,11 @@
 ﻿using GraphicsProgram.Constants;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GraphicsProgram.strategies.PenStrategy
 {
@@ -14,9 +16,10 @@ namespace GraphicsProgram.strategies.PenStrategy
             return PenCommand.Equals(PenState.PenUp);
         }
 
-        public bool ApplyPenState()
+        public bool ApplyPenState(TextBox textbox)
         {
-            return false;
+            textbox.BackColor = Color.Red;
+            return true;
         }
     }
 }

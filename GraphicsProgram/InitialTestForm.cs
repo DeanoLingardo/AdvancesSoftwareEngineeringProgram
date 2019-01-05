@@ -1,4 +1,5 @@
 ﻿using GraphicsProgram.Constants;
+using GraphicsProgram.strategies.MoveStrategy;
 using GraphicsProgram.strategies.PenStrategy;
 using GraphicsProgram.strategies.Polygon;
 using GraphicsProgram.strategies.Triangle;
@@ -24,9 +25,7 @@ namespace GraphicsProgram
 
         private readonly IEnumerable<IUserOperationStrategy> _userOperationStrategies;
         private readonly IEnumerable<IPenStrategy> _penStrategies;
-        int penX;
-        int penY;
-        bool penStatus;
+        private readonly IEnumerable<IMoveStrategy> _moveStrategies;
 
         public InitialTestForm()
         {
@@ -45,10 +44,16 @@ namespace GraphicsProgram
                 new TriangleBasicUserOperation(),
                 new PolygonBasicUserOperation()
             };
+
             _penStrategies = new List<IPenStrategy>
             {
                 new PenUpStrategy(),
                 new PenDownStrategy()
+            };
+
+            _moveStrategies = new List<IMoveStrategy>
+            {
+                new MoveStrategy()
             };
         }
 
@@ -57,78 +62,37 @@ namespace GraphicsProgram
             g.Clear(Color.White);
         }
 
-        private void UpdatePenPositonBox()
+        private void UpdatePenPositionBox()
         {
             textBox3.Text = pen.GetXAsString();
             textBox2.Text = pen.GetYAsString();
         }
 
+        private void ProcessCommand(string userInput)
+        {
+            var splitString = userInput.Split();
+
+            pen = userInput.Contains(MoveState.Move) ? _moveStrategies.Single(x => x.AppliesTo(splitString[0].ToLower())).MovePen(userInput.ToLower(), pen, myPen, g) : pen;
+
+            UpdatePenPositionBox();
+
+            pen.Enabled = userInput.Contains(PenState.Pen) ? _penStrategies.Single(x => x.AppliesTo(userInput)).ApplyPenState(textBox4) : pen.Enabled;
+
+            if (commands.Contains(splitString[0]) && shapes.Contains(splitString[1]))
+            {
+                var command = splitString[0];
+                var shape = splitString[1];
+
+                _userOperationStrategies.Single(x => x.AppliesTo(command, shape)).DoDrawing(myPen, pen, g, userInput);
+            }
+        }
 
         private void runbutton_Click(object sender, EventArgs e)
         {
-            
-            UpdatePenPositonBox();
-
-            //String array to split multi line text input
-            var textBoxLines = userinput.Lines;
-
-
             //Input parsing, split multiline to single lines then split the single lines into an array
-            foreach (var line in textBoxLines)
+            foreach (var line in userinput.Lines)
             {
-                var splitString = line.Split();
-
-                pen.Enabled = line.Contains(PenState.Pen) ? _penStrategies.Single(x => x.AppliesTo(line)).ApplyPenState() : pen.Enabled;
-
-                switch (penStatus)
-                {
-                    case true:                  
-                        if (line.Contains("move"))
-                        {
-                            var x = splitString[1];
-                            var y = splitString[2];
-                            if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
-                            {
-                                pen.X = penX;
-                                pen.Y = penY;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Move Parse Error");
-                            }
-                        }
-                        break;
-
-                    case false:
-                        if (shapes.Any(line.StartsWith))
-                        {
-                            var shape = splitString[0];
-                           _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, shape)).DoDrawing(myPen, pen, g, line);
-                        }
-                        else if (commands.Any(line.StartsWith))
-                        {
-                            var shape = splitString[1];
-                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, shape)).DoDrawing(myPen, pen, g, line);
-                        }
-                    
-                        if (line.Contains("move"))
-                        {
-                            var x = splitString[1];
-                            var y = splitString[2];
-                            if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
-                            {
-                                g.DrawLine(myPen, 0, 0, penX, penY);
-                                pen.X = penX;
-                                pen.Y = penY;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Move Parse Error");
-                            }
-                        }
-                        break;
-                }
-              
+                ProcessCommand(line);
             }
         }
 
@@ -140,16 +104,6 @@ namespace GraphicsProgram
         private void button3_Click_2(object sender, EventArgs e)
         {
             userinput.Clear();
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void textboxToolStripMenuItem_Click(object sender, EventArgs e)
@@ -178,16 +132,6 @@ namespace GraphicsProgram
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void imageToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void textFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var openFileDialog1 = new OpenFileDialog
@@ -214,16 +158,6 @@ namespace GraphicsProgram
             }
         }
 
-        private void InitialTestForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-
-        }
-
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             g.Clear(Color.WhiteSmoke);
@@ -233,32 +167,11 @@ namespace GraphicsProgram
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //Update X & Y coordinate text fields on run command
-            var penPosition = new PenPosition
             {
-                X = penX,
-                Y = penY,
-                Enabled = penStatus
-            };
+                var singleUserInput = SingleLineUserInput.Text;
 
-            textBox3.Text = penPosition.GetXAsString();
-            textBox2.Text = penPosition.GetYAsString();
-
-            var SingletextBoxLines = SingleLineUserInput.Text;
-            var splitString = SingletextBoxLines.Split();
-
-            if (shapes.Any(SingletextBoxLines.StartsWith))
-            {
-                var shape = splitString[0];
-                _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, shape)).DoDrawing(myPen, penPosition, g, SingletextBoxLines);
+                ProcessCommand(singleUserInput);
             }
-            else if (commands.Any(SingletextBoxLines.StartsWith))
-            {
-                var shape = splitString[1];
-                _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, shape)).DoDrawing(myPen, penPosition, g, SingletextBoxLines);
-            }
-            
-
         }
 
         private void button2_Click_1(object sender, EventArgs e)

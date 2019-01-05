@@ -104,7 +104,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(1824, 1324);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // menuStrip1
             // 
@@ -157,7 +156,6 @@
             this.imageToolStripMenuItem1.Name = "imageToolStripMenuItem1";
             this.imageToolStripMenuItem1.Size = new System.Drawing.Size(201, 38);
             this.imageToolStripMenuItem1.Text = "Image";
-            this.imageToolStripMenuItem1.Click += new System.EventHandler(this.imageToolStripMenuItem1_Click);
             // 
             // textFileToolStripMenuItem
             // 
@@ -176,7 +174,6 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(278, 38);
             this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // imageToolStripMenuItem
             // 
@@ -472,7 +469,6 @@
             // 
             // backgroundWorker1
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // groupBox3
             // 
@@ -615,7 +611,6 @@
             this.Name = "InitialTestForm";
             this.Text = "Introduction to programming";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.InitialTestForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

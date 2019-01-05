@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GraphicsProgram.strategies.PenStrategy
 {
@@ -10,6 +11,6 @@ namespace GraphicsProgram.strategies.PenStrategy
     {
         bool AppliesTo(string PenCommand);
 
-        bool ApplyPenState();
+        bool ApplyPenState(TextBox textbox);
     }
 }

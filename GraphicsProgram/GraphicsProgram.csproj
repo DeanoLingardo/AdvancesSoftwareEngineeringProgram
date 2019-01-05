@@ -93,8 +93,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandParser\BasicParser.cs" />
     <Compile Include="CommandParser\IParseCommands.cs" />
     <Compile Include="CommandParser\Models\Command.cs" />
+    <Compile Include="Constants\MoveState.cs" />
     <Compile Include="Constants\PenState.cs" />
     <Compile Include="IUserOperationStrategy.cs" />
     <Compile Include="OperationType.cs" />
@@ -117,6 +119,8 @@
     <Compile Include="strategies\Circle\CircleLoopUserOperation.cs" />
     <Compile Include="strategies\Circle\CircleRepeatOperation.cs" />
     <Compile Include="strategies\Circle\CircleBasicUserOperation.cs" />
+    <Compile Include="strategies\MoveStrategy\IMoveStrategy.cs" />
+    <Compile Include="strategies\MoveStrategy\MoveStrategy.cs" />
     <Compile Include="strategies\PenStrategy\IPenStrategy.cs" />
     <Compile Include="strategies\PenStrategy\PenDownStrategy.cs" />
     <Compile Include="strategies\PenStrategy\PenUpStrategy.cs" />
