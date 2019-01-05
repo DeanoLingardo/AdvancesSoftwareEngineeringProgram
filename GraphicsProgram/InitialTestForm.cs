@@ -1,4 +1,5 @@
-﻿using GraphicsProgram.Constants;
+﻿using GraphicsProgram.CommandParser.Models;
+using GraphicsProgram.Constants;
 using GraphicsProgram.strategies.MoveStrategy;
 using GraphicsProgram.strategies.PenStrategy;
 using GraphicsProgram.strategies.Polygon;
@@ -18,23 +19,29 @@ namespace GraphicsProgram
         private Pen myPen = new Pen(Color.Black, 2);
         private PenPosition pen = new PenPosition();
 
-
         string[] commands = new string[] { OperationType.Repeat, OperationType.Loop, OperationType.If };
         string[] shapes = new string[] { ShapeType.Circle, ShapeType.Rectangle, ShapeType.Triangle, ShapeType.Polygon};
-
 
         private readonly IEnumerable<IUserOperationStrategy> _userOperationStrategies;
         private readonly IEnumerable<IPenStrategy> _penStrategies;
         private readonly IEnumerable<IMoveStrategy> _moveStrategies;
 
+
+
         public InitialTestForm()
         {
+            /*
+             * Initialise canvas properties
+             */
             InitializeComponent();
             Width = 1000;
             Height = 500;
             g = pictureBox1.CreateGraphics();
             pencolorstatus.BackColor = myPen.Color;
-            
+
+           /*
+            * All strategy lists below
+            */        
             _userOperationStrategies = new List<IUserOperationStrategy>
             {
                 new CircleBasicUserOperation(),
@@ -45,22 +52,21 @@ namespace GraphicsProgram
                 new PolygonBasicUserOperation()
             };
 
+            
             _penStrategies = new List<IPenStrategy>
             {
                 new PenUpStrategy(),
                 new PenDownStrategy()
             };
 
+           
             _moveStrategies = new List<IMoveStrategy>
             {
                 new MoveStrategy()
             };
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            g.Clear(Color.White);
-        }
+    
 
         private void UpdatePenPositionBox()
         {
@@ -68,16 +74,23 @@ namespace GraphicsProgram
             textBox2.Text = pen.GetYAsString();
         }
 
+        /// <summary>
+        /// Method to split user input and 
+        /// </summary>
         private void ProcessCommand(string userInput)
         {
+            //Split user input
             var splitString = userInput.Split();
-
+        
+            //If the input line contains move, call the move strategy
             pen = userInput.Contains(MoveState.Move) ? _moveStrategies.Single(x => x.AppliesTo(splitString[0].ToLower())).MovePen(userInput.ToLower(), pen, myPen, g) : pen;
 
             UpdatePenPositionBox();
-
+            
+            //If the input line contains pen, call pen strategy
             pen.Enabled = userInput.Contains(PenState.Pen) ? _penStrategies.Single(x => x.AppliesTo(userInput)).ApplyPenState(textBox4) : pen.Enabled;
 
+            //If the input line is a command, call shape & command strategy
             if (commands.Contains(splitString[0]) && shapes.Contains(splitString[1]))
             {
                 var command = splitString[0];
@@ -85,8 +98,19 @@ namespace GraphicsProgram
 
                 _userOperationStrategies.Single(x => x.AppliesTo(command, shape)).DoDrawing(myPen, pen, g, userInput);
             }
+
+            //If the input line is a shape, call shape strategy (Set operation to basic)
+            if (shapes.Contains(splitString[0]))
+                {
+                var shape = splitString[0];
+                _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, shape)).DoDrawing(myPen, pen, g, userInput);
+            }
+
         }
 
+        /// <summary>
+        /// Run button for Multi-Line textbox
+        /// </summary>
         private void runbutton_Click(object sender, EventArgs e)
         {
             //Input parsing, split multiline to single lines then split the single lines into an array
@@ -96,19 +120,22 @@ namespace GraphicsProgram
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Run button for Multi-line commands
+        /// </summary>
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            g.Clear(Color.WhiteSmoke);
+            {
+                var singleUserInput = SingleLineUserInput.Text;
+                ProcessCommand(singleUserInput);
+            }
         }
 
-        private void button3_Click_2(object sender, EventArgs e)
-        {
-            userinput.Clear();
-        }
-
+        /// <summary>
+        /// Contains method for performing text save
+        /// </summary>
         private void textboxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Save textbox contents to a text file
             var SaveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
 
@@ -119,6 +146,9 @@ namespace GraphicsProgram
             }    
         }
 
+        /// <summary>
+        /// Contains method for performing image save 
+        /// </summary>
         private void imageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var SaveFileDialog2 = new SaveFileDialog();
@@ -132,6 +162,9 @@ namespace GraphicsProgram
             }
         }
 
+        /// <summary>
+        /// Contains method for performing open text
+        /// </summary>
         private void textFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var openFileDialog1 = new OpenFileDialog
@@ -142,10 +175,9 @@ namespace GraphicsProgram
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
-                {   // Open the text file using a stream reader.
+                {   
                     using (var sr = new StreamReader(openFileDialog1.FileName))
                     {
-                        // Read the stream to a string, and write the string to the textbox.
                         var line = sr.ReadToEnd();
                         userinput.Text = line;
                         MessageBox.Show("Text succefully written", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -158,6 +190,9 @@ namespace GraphicsProgram
             }
         }
 
+        /// <summary>
+        /// Clears all textboxes & graphics panal
+        /// </summary>
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             g.Clear(Color.WhiteSmoke);
@@ -165,25 +200,29 @@ namespace GraphicsProgram
             SingleLineUserInput.Clear();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        //Clears graphics panel only
+        private void button2_Click(object sender, EventArgs e)
         {
-            {
-                var singleUserInput = SingleLineUserInput.Text;
-
-                ProcessCommand(singleUserInput);
-            }
+            g.Clear(Color.WhiteSmoke);
         }
 
+        //Clears Multi-line textbox only
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            userinput.Clear();
+        }
+
+        /// <summary>
+        /// Clears Single-line commands textbox
+        /// </summary>
         private void button2_Click_1(object sender, EventArgs e)
         {
             SingleLineUserInput.Clear();
         }
 
-        private void programInformationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Use Commands tab to see the list of available commands!", "Need Help?", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
+        /// <summary>
+        /// Contains methods for choosing pen color
+        /// </summary>
         private void penColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Show the color dialog.
@@ -196,20 +235,30 @@ namespace GraphicsProgram
                 pencolorstatus.BackColor = colorDialog1.Color;
             }
         }
+ 
 
+        //Displays Exit application message box
         private void exitApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Are you sure?", "Closing Application...", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
             {
                 Application.Exit();
             }
-        }  
-      }
+        }
+
+        //Displays initial welcome text box
+        private void InitialTestForm_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Created by Dean Lingard", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.None);     
+        }
+
+        //Displays program information message box
+        private void programInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Use Commands tab to see the list of available commands!", "Need Help?", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
     }
     
     
-
-// ______  _______ _______ __   _             _____ __   _  ______ _______  ______ ______                     
-// |     \ |______ |_____| | \  |      |        |   | \  | |  ____ |_____| |_____/ |     \                    
-// |_____/ |______ |     | |  \_|      |_____ __|__ |  \_| |_____| |     | |    \_ |_____/                    
-// © 2018                                                                                                          
+//Created by Dean Lingard 2018
