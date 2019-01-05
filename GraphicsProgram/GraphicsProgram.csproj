@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandParser.cs" />
+    <Compile Include="Constants\PenState.cs" />
     <Compile Include="IUserOperationStrategy.cs" />
     <Compile Include="OperationType.cs" />
     <Compile Include="PenPosition.cs" />
@@ -115,7 +116,8 @@
     <Compile Include="strategies\Circle\CircleLoopUserOperation.cs" />
     <Compile Include="strategies\Circle\CircleRepeatOperation.cs" />
     <Compile Include="strategies\Circle\CircleBasicUserOperation.cs" />
-    <Compile Include="strategies\Pen\IPenStrategy.cs" />
+    <Compile Include="strategies\PenStrategy\IPenStrategy.cs" />
+    <Compile Include="strategies\PenStrategy\PenUpStrategy.cs" />
     <Compile Include="strategies\Polygon\PolygonBasicUserOperation.cs" />
     <Compile Include="strategies\Rectangle\RectangleBasicUserOperation.cs" />
     <Compile Include="strategies\Rectangle\RectangleIfUserOperation.cs" />

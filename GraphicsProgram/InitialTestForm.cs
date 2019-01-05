@@ -1,4 +1,6 @@
-﻿using GraphicsProgram.strategies.Polygon;
+﻿using GraphicsProgram.Constants;
+using GraphicsProgram.strategies.PenStrategy;
+using GraphicsProgram.strategies.Polygon;
 using GraphicsProgram.strategies.Triangle;
 using System;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ namespace GraphicsProgram
 
 
         private readonly IEnumerable<IUserOperationStrategy> _userOperationStrategies;
-
+        private readonly IEnumerable<IPenStrategy> _penStrategies;
         int penX;
         int penY;
         bool penStatus;
@@ -43,6 +45,11 @@ namespace GraphicsProgram
                 new RectangleRepeatOperation(),
                 new TriangleBasicUserOperation(),
                 new PolygonBasicUserOperation()
+            };
+
+            _penStrategies = new List<IPenStrategy>
+            {
+                new PenUpStrategy()
             };
         }
 
@@ -73,17 +80,7 @@ namespace GraphicsProgram
             {
                 var splitString = line.Split();
 
-                switch (line)
-                {
-                    case "Penup":
-                        penStatus = true;
-                        textBox4.BackColor = (Color.Red);
-                        break;
-                    case "Pendown":
-                        penStatus = false;
-                        textBox4.BackColor = (Color.Green);
-                        break;
-                }
+                penPosition.Enabled = line.Contains(PenState.Pen) ? _penStrategies.Single(x => x.AppliesTo(line)).ApplyPenState() : penPosition.Enabled;
 
                 switch (penStatus)
                 {
