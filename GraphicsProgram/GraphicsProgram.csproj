@@ -117,6 +117,7 @@
     <Compile Include="strategies\Circle\CircleRepeatOperation.cs" />
     <Compile Include="strategies\Circle\CircleBasicUserOperation.cs" />
     <Compile Include="strategies\PenStrategy\IPenStrategy.cs" />
+    <Compile Include="strategies\PenStrategy\PenDownStrategy.cs" />
     <Compile Include="strategies\PenStrategy\PenUpStrategy.cs" />
     <Compile Include="strategies\Polygon\PolygonBasicUserOperation.cs" />
     <Compile Include="strategies\Rectangle\RectangleBasicUserOperation.cs" />

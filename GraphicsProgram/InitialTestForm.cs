@@ -18,8 +18,8 @@ namespace GraphicsProgram
         private PenPosition pen = new PenPosition();
 
 
-        string[] commands = new string[] { "repeat", "loop", "if" };
-        string[] shapes = new string[] { "circle", "rectangle", "triangle", "polygon"};
+        string[] commands = new string[] { OperationType.Repeat, OperationType.Loop, OperationType.If };
+        string[] shapes = new string[] { ShapeType.Circle, ShapeType.Rectangle, ShapeType.Triangle, ShapeType.Polygon};
 
 
         private readonly IEnumerable<IUserOperationStrategy> _userOperationStrategies;
@@ -49,7 +49,8 @@ namespace GraphicsProgram
 
             _penStrategies = new List<IPenStrategy>
             {
-                new PenUpStrategy()
+                new PenUpStrategy(),
+                new PenDownStrategy()
             };
         }
 
