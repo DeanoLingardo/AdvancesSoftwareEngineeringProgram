@@ -35,8 +35,7 @@ namespace GraphicsProgram
             Height = 500;
             g = pictureBox1.CreateGraphics();
             pencolorstatus.BackColor = myPen.Color;
-
-
+            
             _userOperationStrategies = new List<IUserOperationStrategy>
             {
                 new CircleBasicUserOperation(),
@@ -46,7 +45,6 @@ namespace GraphicsProgram
                 new TriangleBasicUserOperation(),
                 new PolygonBasicUserOperation()
             };
-
             _penStrategies = new List<IPenStrategy>
             {
                 new PenUpStrategy(),
@@ -59,19 +57,18 @@ namespace GraphicsProgram
             g.Clear(Color.White);
         }
 
+        private void UpdatePenPositonBox()
+        {
+            textBox3.Text = pen.GetXAsString();
+            textBox2.Text = pen.GetYAsString();
+        }
+
+
         private void runbutton_Click(object sender, EventArgs e)
         {
-            //Update X & Y coordinate text fields on run command
-            var penPosition = new PenPosition
-            {
-                X = penX,
-                Y = penY,
-                Enabled = penStatus
-            };
-
-            textBox3.Text = penPosition.GetXAsString();
-            textBox2.Text = penPosition.GetYAsString();
             
+            UpdatePenPositonBox();
+
             //String array to split multi line text input
             var textBoxLines = userinput.Lines;
 
@@ -81,7 +78,7 @@ namespace GraphicsProgram
             {
                 var splitString = line.Split();
 
-                penPosition.Enabled = line.Contains(PenState.Pen) ? _penStrategies.Single(x => x.AppliesTo(line)).ApplyPenState() : penPosition.Enabled;
+                pen.Enabled = line.Contains(PenState.Pen) ? _penStrategies.Single(x => x.AppliesTo(line)).ApplyPenState() : pen.Enabled;
 
                 switch (penStatus)
                 {
@@ -106,12 +103,12 @@ namespace GraphicsProgram
                         if (shapes.Any(line.StartsWith))
                         {
                             var shape = splitString[0];
-                           _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, shape)).DoDrawing(myPen, penPosition, g, line);
+                           _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, shape)).DoDrawing(myPen, pen, g, line);
                         }
                         else if (commands.Any(line.StartsWith))
                         {
                             var shape = splitString[1];
-                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, shape)).DoDrawing(myPen, penPosition, g, line);
+                            _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Repeat, shape)).DoDrawing(myPen, pen, g, line);
                         }
                     
                         if (line.Contains("move"))
@@ -121,8 +118,8 @@ namespace GraphicsProgram
                             if (int.TryParse(x, out penX) && int.TryParse(y, out penY))
                             {
                                 g.DrawLine(myPen, 0, 0, penX, penY);
-                                penPosition.X = penX;
-                                penPosition.Y = penY;
+                                pen.X = penX;
+                                pen.Y = penY;
                             }
                             else
                             {

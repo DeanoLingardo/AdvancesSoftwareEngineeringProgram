@@ -93,7 +93,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandParser.cs" />
+    <Compile Include="CommandParser\IParseCommands.cs" />
+    <Compile Include="CommandParser\Models\Command.cs" />
     <Compile Include="Constants\PenState.cs" />
     <Compile Include="IUserOperationStrategy.cs" />
     <Compile Include="OperationType.cs" />
