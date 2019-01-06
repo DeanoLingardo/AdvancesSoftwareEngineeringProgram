@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Windows.Forms;
 using GraphicsProgram;
 using GraphicsProgram.Shapes;
 
@@ -14,13 +15,19 @@ public class CircleBasicUserOperation : IUserOperationStrategy
     {
         var split = line.Split();
 
-        double.TryParse(split[1], out var circleRadius);
+        try
+        {
+            double.TryParse(split[1], out var circleRadius);
+            IShape circle = new CircleShape(circleRadius);
 
-        IShape circle = new CircleShape(circleRadius);
+            double diameter = circle.GetDiameter();
+            float diameterF = Convert.ToSingle(diameter);
 
-        double diameter = circle.GetDiameter();
-        float diameterF = Convert.ToSingle(diameter);
-
-        g.DrawEllipse(pen, penPosition.X, penPosition.Y, diameterF, diameterF);
+            g.DrawEllipse(pen, penPosition.X, penPosition.Y, diameterF, diameterF);
+        }
+        catch (IndexOutOfRangeException)
+        {
+            MessageBox.Show("Missing Radius Parameter", "Missing Paramters", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

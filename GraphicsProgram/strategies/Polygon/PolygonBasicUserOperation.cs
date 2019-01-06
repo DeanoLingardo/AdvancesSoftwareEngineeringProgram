@@ -20,28 +20,28 @@ namespace GraphicsProgram.strategies.Polygon
             {
                 A = new Points
                 {
-                    X = penPosition.X,
-                    Y = penPosition.Y
+                    X = penPosition.X = 0,
+                    Y = penPosition.Y = 0
                 },
                 B = new Points
                 {
-                    X = penPosition.X += 90,
+                    X = penPosition.X = 90,
                     Y = penPosition.Y
                 },
                 C = new Points
                 {
-                    X = penPosition.X += 40,
-                    Y = penPosition.Y += 90
+                    X = penPosition.X = 40,
+                    Y = penPosition.Y = 90
                 },
                 D = new Points
                 {
-                    X = penPosition.X += 100,
-                    Y = penPosition.Y += 140
+                    X = penPosition.X = 100,
+                    Y = penPosition.Y = 140
                 },
                 E = new Points
                 {
-                    X = penPosition.X += 140,
-                    Y = penPosition.Y += 190
+                    X = penPosition.X = 140,
+                    Y = penPosition.Y = 190
                 }
             };
 

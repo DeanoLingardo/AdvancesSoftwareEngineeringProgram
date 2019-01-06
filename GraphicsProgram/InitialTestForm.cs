@@ -74,6 +74,11 @@ namespace GraphicsProgram
             textBox2.Text = pen.GetYAsString();
         }
 
+        private void commandCheck()
+        {
+         
+        }
+
         /// <summary>
         /// Method to split user input and 
         /// </summary>
