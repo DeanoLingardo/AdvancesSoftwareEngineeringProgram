@@ -27,7 +27,7 @@ public class CircleBasicUserOperation : IUserOperationStrategy
         }
         catch (IndexOutOfRangeException)
         {
-            MessageBox.Show("Missing Radius Parameter", "Missing Paramters", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Missing Radius Parameter, FORMAT <Shape> <Radius>", "Missing Paramters", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

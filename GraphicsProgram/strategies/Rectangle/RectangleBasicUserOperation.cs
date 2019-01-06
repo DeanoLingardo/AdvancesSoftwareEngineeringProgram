@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows;
+using System.Windows.Forms;
 using GraphicsProgram;
 using GraphicsProgram.Shapes;
 
@@ -17,17 +18,24 @@ public class RectangleBasicUserOperation : IUserOperationStrategy
         double rectangleWidth;
         double rectangleHeight;
 
-        var W = split[1];
-        var H = split[2]; 
-
-        if (double.TryParse(W, out rectangleWidth) && double.TryParse(H, out rectangleHeight))
+        try
         {
-            IShape rec = new RectangleShape(rectangleWidth, rectangleHeight);
+            var W = split[1];
+            var H = split[2];
 
-            float widthF = Convert.ToSingle(W);
-            float heightF = Convert.ToSingle(H);
+            if (double.TryParse(W, out rectangleWidth) && double.TryParse(H, out rectangleHeight))
+            {
+                IShape rec = new RectangleShape(rectangleWidth, rectangleHeight);
 
-            g.DrawRectangle(pen, penPosition.X, penPosition.Y, widthF, heightF);
+                float widthF = Convert.ToSingle(W);
+                float heightF = Convert.ToSingle(H);
+
+                g.DrawRectangle(pen, penPosition.X, penPosition.Y, widthF, heightF);
+            }
+        }
+        catch (IndexOutOfRangeException)
+        {
+            System.Windows.Forms.MessageBox.Show("Missing Width & Height Parameters : FORMAT <Shape> <Width> <Height>", "Missing Paramters", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
-}
+    }
