@@ -130,6 +130,7 @@
     <Compile Include="Strategies\Rectangle\RectangleLoopUserOperation.cs" />
     <Compile Include="Strategies\Rectangle\RectangleRepeatOperation.cs" />
     <Compile Include="Strategies\Triangle\TriangleBasicUserOperation.cs" />
+    <Compile Include="Strategies\Triangle\TriangleRepeatUserOperation.cs" />
     <EmbeddedResource Include="InitialTestForm.resx">
       <DependentUpon>InitialTestForm.cs</DependentUpon>
     </EmbeddedResource>

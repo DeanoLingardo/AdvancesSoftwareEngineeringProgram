@@ -18,9 +18,10 @@ namespace GraphicsProgram.strategies.Polygon
         {
             var split = line.Split();
             string Operator;
+            var repeatSize = 5;
 
-            Operator = split[3];
-            int.TryParse(split[4], out int AmountOfRepition);
+            Operator = split[2];
+            int.TryParse(split[3], out int AmountOfRepition);
 
             var Points = new ShapePoints
             {
@@ -46,8 +47,8 @@ namespace GraphicsProgram.strategies.Polygon
                 },
                 E = new Points
                 {
-                    X = penPosition.X = 60,
-                    Y = penPosition.Y = 60
+                    X = penPosition.X = 10,
+                    Y = penPosition.Y = 10
                 }
             };
 
@@ -55,15 +56,16 @@ namespace GraphicsProgram.strategies.Polygon
             {
                 for (int i = 0; i < AmountOfRepition; i++)
                 {
-                    Point[] points = { new Point(Points.A.X + AmountOfRepition, Points.A.Y + AmountOfRepition), new Point(Points.B.X + AmountOfRepition, Points.B.Y + AmountOfRepition), new Point(Points.C.X + AmountOfRepition, Points.C.Y + AmountOfRepition), new Point(Points.D.X + AmountOfRepition, Points.D.Y + AmountOfRepition), new Point(Points.E.X + AmountOfRepition, Points.E.Y + AmountOfRepition) };
+                    Point[] points = { new Point(Points.A.X += repeatSize, Points.A.Y += repeatSize), new Point(Points.B.X += repeatSize, Points.B.Y += repeatSize), new Point(Points.C.X += repeatSize, Points.C.Y += repeatSize), new Point(Points.D.X += repeatSize, Points.D.Y += repeatSize), new Point(Points.E.X += repeatSize, Points.E.Y += repeatSize) };
                     g.DrawPolygon(pen, points);
                 }
+                
             }
             if (Operator == "-")
             {
                 for (int i = 0; i < AmountOfRepition; i++)
                 {
-                    Point[] points = { new Point(Points.A.X - AmountOfRepition, Points.A.Y - AmountOfRepition), new Point(Points.B.X - AmountOfRepition, Points.B.Y - AmountOfRepition), new Point(Points.C.X - AmountOfRepition, Points.C.Y - AmountOfRepition), new Point(Points.D.X - AmountOfRepition, Points.D.Y - AmountOfRepition), new Point(Points.E.X - AmountOfRepition, Points.E.Y - AmountOfRepition) };
+                    Point[] points = { new Point(Points.A.X -= repeatSize, Points.A.Y -= repeatSize), new Point(Points.B.X -= repeatSize, Points.B.Y -= repeatSize), new Point(Points.C.X -= repeatSize, Points.C.Y -= repeatSize), new Point(Points.D.X -= repeatSize, Points.D.Y -= repeatSize), new Point(Points.E.X -= repeatSize, Points.E.Y -= repeatSize) };
                     g.DrawPolygon(pen, points);
                 }
             }

@@ -20,6 +20,7 @@ namespace GraphicsProgram
         private Graphics g;
         private Pen myPen = new Pen(Color.Black, 2);
         private PenPosition pen = new PenPosition();
+        
 
         string[] commands = new string[] { OperationType.Repeat, OperationType.Loop, OperationType.If };
         string[] shapes = new string[] { ShapeType.Circle, ShapeType.Rectangle, ShapeType.Triangle, ShapeType.Polygon};
@@ -55,7 +56,10 @@ namespace GraphicsProgram
                 new CircleRepeatOperation(),
                 new RectangleRepeatOperation(),
                 new TriangleBasicUserOperation(),
-                new PolygonBasicUserOperation()
+                new PolygonBasicUserOperation(),
+                new PolygonRepeatOperation(),
+                new TriangleRepeatUserOperation()
+
             };
 
             
@@ -91,7 +95,7 @@ namespace GraphicsProgram
             //If the input line contains move
             if (moveStatus.Contains(splitString[0]))
             {
-                pen = _moveStrategies.Single(x => x.AppliesTo(splitString[0].ToLower())).MovePen(userInput.ToLower(), pen, myPen, g);
+                pen = _moveStrategies.Single(x => x.AppliesTo(splitString[0])).MovePen(userInput, pen, myPen, g);
                 UpdatePenPositionBox();
             }
 
@@ -99,6 +103,7 @@ namespace GraphicsProgram
             else if (penStatus.Contains(splitString[0]))
             {
                _penStrategies.Single(x => x.AppliesTo(userInput.ToLower().Trim())).ApplyPenState(textBox4);
+
             }   
 
             //If the input line is a command, call shape & command strategy

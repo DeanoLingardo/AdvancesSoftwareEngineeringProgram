@@ -19,7 +19,7 @@ namespace GraphicsProgram.strategies.PenStrategy
         public bool ApplyPenState(TextBox textbox)
         {
             textbox.BackColor = Color.Red;
-            return false;
+            return true;
         }
     }
 }

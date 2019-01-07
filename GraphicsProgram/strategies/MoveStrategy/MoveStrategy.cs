@@ -19,6 +19,8 @@ namespace GraphicsProgram.strategies.MoveStrategy
         public PenPosition MovePen(string line, PenPosition penStatus, Pen pen, Graphics G)
         {
             var splitCommand = line.Split();
+            float X = 0;
+            float Y = 0;
 
             try
             {
@@ -26,15 +28,22 @@ namespace GraphicsProgram.strategies.MoveStrategy
                 var penY = int.Parse(splitCommand[2]);
 
                 if (penStatus.Enabled)
-                {
-                    G.DrawLine(pen, penX, penY, 0, 0);
+                {        
+                    G.DrawLine(pen, Y, X, penX, penY);
+                    X = penX;
+                    Y = penY;
                 }
+                else if (penStatus.Enabled == false)
+                {
+                    X = penX;
+                    Y = penY;
+                }
+                
 
                 return new PenPosition
                 {
                     X = penX,
                     Y = penY,
-                    Enabled = penStatus.Enabled
                 };
             }
             catch (Exception)
