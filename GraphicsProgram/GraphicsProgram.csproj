@@ -97,7 +97,7 @@
     <Compile Include="Constants\MoveState.cs" />
     <Compile Include="Constants\PenState.cs" />
     <Compile Include="Shapes\ShapeFactory.cs" />
-    <Compile Include="strategies\IUserOperationStrategy.cs" />
+    <Compile Include="Strategies\IUserOperationStrategy.cs" />
     <Compile Include="Constants\OperationType.cs" />
     <Compile Include="Models\PenPosition.cs" />
     <Compile Include="InitialTestForm.cs">
@@ -114,22 +114,22 @@
     <Compile Include="Shapes\IShape.cs" />
     <Compile Include="Shapes\RectangleShape.cs" />
     <Compile Include="Constants\ShapeType.cs" />
-    <Compile Include="strategies\Circle\CircleIfUserOperation.cs" />
-    <Compile Include="strategies\Circle\CircleLoopUserOperation.cs" />
-    <Compile Include="strategies\Circle\CircleRepeatOperation.cs" />
-    <Compile Include="strategies\Circle\CircleBasicUserOperation.cs" />
-    <Compile Include="strategies\MoveStrategy\IMoveStrategy.cs" />
-    <Compile Include="strategies\MoveStrategy\MoveStrategy.cs" />
-    <Compile Include="strategies\PenStrategy\IPenStrategy.cs" />
-    <Compile Include="strategies\PenStrategy\PenDownStrategy.cs" />
-    <Compile Include="strategies\PenStrategy\PenUpStrategy.cs" />
-    <Compile Include="strategies\Polygon\PolygonRepeatOperation.cs" />
-    <Compile Include="strategies\Polygon\PolygonBasicUserOperation.cs" />
-    <Compile Include="strategies\Rectangle\RectangleBasicUserOperation.cs" />
-    <Compile Include="strategies\Rectangle\RectangleIfUserOperation.cs" />
-    <Compile Include="strategies\Rectangle\RectangleLoopUserOperation.cs" />
-    <Compile Include="strategies\Rectangle\RectangleRepeatOperation.cs" />
-    <Compile Include="strategies\Triangle\TriangleBasicUserOperation.cs" />
+    <Compile Include="Strategies\Circle\CircleIfUserOperation.cs" />
+    <Compile Include="Strategies\Circle\CircleLoopUserOperation.cs" />
+    <Compile Include="Strategies\Circle\CircleRepeatOperation.cs" />
+    <Compile Include="Strategies\Circle\CircleBasicUserOperation.cs" />
+    <Compile Include="Strategies\MoveStrategy\IMoveStrategy.cs" />
+    <Compile Include="Strategies\MoveStrategy\MoveStrategy.cs" />
+    <Compile Include="Strategies\PenStrategy\IPenStrategy.cs" />
+    <Compile Include="Strategies\PenStrategy\PenDownStrategy.cs" />
+    <Compile Include="Strategies\PenStrategy\PenUpStrategy.cs" />
+    <Compile Include="Strategies\Polygon\PolygonRepeatOperation.cs" />
+    <Compile Include="Strategies\Polygon\PolygonBasicUserOperation.cs" />
+    <Compile Include="Strategies\Rectangle\RectangleBasicUserOperation.cs" />
+    <Compile Include="Strategies\Rectangle\RectangleIfUserOperation.cs" />
+    <Compile Include="Strategies\Rectangle\RectangleLoopUserOperation.cs" />
+    <Compile Include="Strategies\Rectangle\RectangleRepeatOperation.cs" />
+    <Compile Include="Strategies\Triangle\TriangleBasicUserOperation.cs" />
     <EmbeddedResource Include="InitialTestForm.resx">
       <DependentUpon>InitialTestForm.cs</DependentUpon>
     </EmbeddedResource>

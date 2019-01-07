@@ -18,8 +18,10 @@ namespace GraphicsProgram
             {
                 return null;
             }
-            
-            
+            if (shapeType.Equals("RECTANGLE"))
+            {
+                return null;
+            }         
             else
             {
                 ArgumentException argx = new ArgumentException("Factory Error: " + shapeType + "Does Not Exist!");

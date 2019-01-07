@@ -95,7 +95,7 @@ namespace GraphicsProgram
                 UpdatePenPositionBox();
             }
 
-            //If the input line contains pen, call pen strategy
+            //If the input line contains pen, call pen strategy, 
             else if (penStatus.Contains(splitString[0]))
             {
                _penStrategies.Single(x => x.AppliesTo(userInput.ToLower().Trim())).ApplyPenState(textBox4);
@@ -112,7 +112,7 @@ namespace GraphicsProgram
 
             //If the input line is a shape, call shape strategy (Set operation to basic)
             else if (shapes.Contains(splitString[0]))
-                {
+            {
                 var shape = splitString[0];
                 _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, shape)).DoDrawing(myPen, pen, g, userInput);
             }
@@ -132,7 +132,7 @@ namespace GraphicsProgram
             //Input parsing, split multiline to single lines then split the single lines into an array
             foreach (var line in userinput.Lines)
             {
-                ProcessCommand(line);
+                ProcessCommand(line.ToLower());
             }
         }
 
@@ -143,7 +143,7 @@ namespace GraphicsProgram
         {
             {
                 var singleUserInput = SingleLineUserInput.Text;
-                ProcessCommand(singleUserInput);
+                ProcessCommand(singleUserInput.ToLower());
             }
         }
 

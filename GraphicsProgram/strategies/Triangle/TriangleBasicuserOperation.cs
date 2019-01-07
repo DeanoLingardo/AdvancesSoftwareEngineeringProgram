@@ -21,18 +21,18 @@ namespace GraphicsProgram.strategies.Triangle
             {
                 A = new Points
                 {
-                    X = penPosition.X,
-                    Y = penPosition.Y
+                    X = penPosition.X = 0,
+                    Y = penPosition.Y = 0
                 },
                 B = new Points
                 {
-                    X = penPosition.X += 90,
-                    Y = penPosition.Y
+                    X = penPosition.X = 90,
+                    Y = penPosition.Y = 40
                 },
                 C = new Points
                 {
-                    X = penPosition.X += 40,
-                    Y = penPosition.Y += 90
+                    X = penPosition.X = 40,
+                    Y = penPosition.Y = 90
                 }
             };
 

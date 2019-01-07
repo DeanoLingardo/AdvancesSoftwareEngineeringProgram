@@ -12,5 +12,6 @@ namespace GraphicsProgram.strategies.PenStrategy
         bool AppliesTo(string PenCommand);
 
         bool ApplyPenState(TextBox textbox);
+
     }
 }
