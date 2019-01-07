@@ -542,6 +542,7 @@
             this.SingleLineUserInput.Name = "SingleLineUserInput";
             this.SingleLineUserInput.Size = new System.Drawing.Size(464, 31);
             this.SingleLineUserInput.TabIndex = 37;
+            this.SingleLineUserInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SingleLineUserInput_KeyPress);
             // 
             // label5
             // 
@@ -608,7 +609,6 @@
             this.Name = "InitialTestForm";
             this.Text = "Introduction to programming";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.InitialTestForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

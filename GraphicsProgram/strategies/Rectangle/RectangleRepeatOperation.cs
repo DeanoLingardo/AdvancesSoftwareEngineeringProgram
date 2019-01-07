@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Windows.Forms;
 using GraphicsProgram;
 using GraphicsProgram.Shapes;
 
@@ -19,31 +20,38 @@ public class RectangleRepeatOperation : IUserOperationStrategy
 
         int.TryParse(split[5], out int AmountOfRepition);
         Operator = split[4];
-        double.TryParse(split[3], out double H);
-        double.TryParse(split[2], out double W);
-
-        IShape rec = new RectangleShape(W, H);
-
-        float widthF = Convert.ToSingle(W);
-        float heightF = Convert.ToSingle(H);
-
-        if (Operator == "+")
+      
+        if (double.TryParse(split[2], out double W) && double.TryParse(split[3], out double H) && W != H)
         {
-            for (int i = 0; i < AmountOfRepition; i++)
+            IShape rec = new RectangleShape(W, H);
+
+            float widthF = Convert.ToSingle(W);
+            float heightF = Convert.ToSingle(H);
+
+            if (Operator == "+")
             {
-                g.DrawRectangle(pen, penPosition.X, penPosition.Y, widthF, heightF);
-                widthF += repeatSize;
-                heightF += repeatSize;
+                for (int i = 0; i < AmountOfRepition; i++)
+                {
+                    g.DrawRectangle(pen, penPosition.X, penPosition.Y, widthF, heightF);
+                    widthF += repeatSize;
+                    heightF += repeatSize;
+                }
+            }
+            if (Operator == "-")
+            {
+                for (int i = 0; i < AmountOfRepition; i++)
+                {
+                    g.DrawRectangle(pen, penPosition.X, penPosition.Y, widthF, heightF);
+                    widthF -= repeatSize;
+                    heightF -= repeatSize;
+                }
             }
         }
-        if (Operator == "-")
+        else
         {
-            for (int i = 0; i < AmountOfRepition; i++)
-            {
-                g.DrawRectangle(pen, penPosition.X, penPosition.Y, widthF, heightF);
-                widthF -= repeatSize;
-                heightF -= repeatSize;
-            }
+            MessageBox.Show("Height & Width must be not be the same : FORMAT <Command> <Shape> <Width> <Height> <Operator> <Repitition Size>", "Wrong Paramters", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+
     }
 }

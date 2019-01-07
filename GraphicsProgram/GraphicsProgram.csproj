@@ -93,29 +93,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandParser\BasicParser.cs" />
-    <Compile Include="CommandParser\IParseCommands.cs" />
-    <Compile Include="CommandParser\Models\Command.cs" />
-    <Compile Include="CommandParser\Models\CommandType.cs" />
+    <Compile Include="Models\Command.cs" />
     <Compile Include="Constants\MoveState.cs" />
     <Compile Include="Constants\PenState.cs" />
-    <Compile Include="IUserOperationStrategy.cs" />
-    <Compile Include="OperationType.cs" />
-    <Compile Include="PenPosition.cs" />
+    <Compile Include="Shapes\ShapeFactory.cs" />
+    <Compile Include="strategies\IUserOperationStrategy.cs" />
+    <Compile Include="Constants\OperationType.cs" />
+    <Compile Include="Models\PenPosition.cs" />
     <Compile Include="InitialTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InitialTestForm.Designer.cs">
       <DependentUpon>InitialTestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Points.cs" />
+    <Compile Include="Models\Points.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShapePoints.cs" />
+    <Compile Include="Models\ShapePoints.cs" />
     <Compile Include="Shapes\CircleShape.cs" />
     <Compile Include="Shapes\IShape.cs" />
     <Compile Include="Shapes\RectangleShape.cs" />
-    <Compile Include="ShapeType.cs" />
+    <Compile Include="Constants\ShapeType.cs" />
     <Compile Include="strategies\Circle\CircleIfUserOperation.cs" />
     <Compile Include="strategies\Circle\CircleLoopUserOperation.cs" />
     <Compile Include="strategies\Circle\CircleRepeatOperation.cs" />
@@ -125,6 +123,7 @@
     <Compile Include="strategies\PenStrategy\IPenStrategy.cs" />
     <Compile Include="strategies\PenStrategy\PenDownStrategy.cs" />
     <Compile Include="strategies\PenStrategy\PenUpStrategy.cs" />
+    <Compile Include="strategies\Polygon\PolygonRepeatOperation.cs" />
     <Compile Include="strategies\Polygon\PolygonBasicUserOperation.cs" />
     <Compile Include="strategies\Rectangle\RectangleBasicUserOperation.cs" />
     <Compile Include="strategies\Rectangle\RectangleIfUserOperation.cs" />
@@ -173,9 +172,7 @@
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

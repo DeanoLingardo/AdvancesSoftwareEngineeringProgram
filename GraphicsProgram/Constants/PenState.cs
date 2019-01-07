@@ -9,8 +9,8 @@ namespace GraphicsProgram.Constants
 {
     public class PenState
     {
-        public const string PenDown = "Pendown";
-        public const string PenUp = "Penup";
+        public const string PenDown = "pendown";
+        public const string PenUp = "penup";
 
         public const string Pen = "Pen";
     }

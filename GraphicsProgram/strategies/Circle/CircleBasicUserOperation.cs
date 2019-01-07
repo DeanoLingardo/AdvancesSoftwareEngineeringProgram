@@ -1,33 +1,38 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using GraphicsProgram;
 using GraphicsProgram.Shapes;
 
-public class CircleBasicUserOperation : IUserOperationStrategy
+namespace GraphicsProgram.strategies.Circle
 {
-    public bool AppliesTo(string userOperationType, string shape)
+    public class CircleBasicUserOperation : IUserOperationStrategy
     {
-        return userOperationType.Equals(OperationType.Basic) && shape.Equals(ShapeType.Circle);
-    }
-
-    public void DoDrawing(Pen pen, PenPosition penPosition, Graphics g, string line)
-    {
-        var split = line.Split();
-
-        try
+        public bool AppliesTo(string userOperationType, string shape)
         {
-            double.TryParse(split[1], out var circleRadius);
-            IShape circle = new CircleShape(circleRadius);
-
-            double diameter = circle.GetDiameter();
-            float diameterF = Convert.ToSingle(diameter);
-
-            g.DrawEllipse(pen, penPosition.X, penPosition.Y, diameterF, diameterF);
+            return userOperationType.Equals(OperationType.Basic) && shape.Equals(ShapeType.Circle);
         }
-        catch (IndexOutOfRangeException)
+
+        public void DoDrawing(Pen pen, PenPosition penPosition, Graphics g, string line)
         {
-            MessageBox.Show("Missing Radius Parameter, FORMAT <Shape> <Radius>", "Missing Paramters", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var split = line.Split();
+
+            try
+            {
+                double.TryParse(split[1], out var circleRadius);
+                IShape circle = new CircleShape(circleRadius);
+
+                ShapeFactory fac = new ShapeFactory();
+                fac.CreateShape("circle");
+
+                double diameter = circle.GetDiameter();
+                float diameterF = Convert.ToSingle(diameter);
+
+                g.DrawEllipse(pen, penPosition.X, penPosition.Y, diameterF, diameterF);
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Missing Radius Parameter, FORMAT <Shape> <Radius>", "Missing Paramters", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

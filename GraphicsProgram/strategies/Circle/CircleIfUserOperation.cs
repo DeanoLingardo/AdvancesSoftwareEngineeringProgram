@@ -1,17 +1,18 @@
-﻿using System;
-using System.Drawing;
-using GraphicsProgram;
-using GraphicsProgram.Shapes;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
-public class CircleIfUserOperation : IUserOperationStrategy
+namespace GraphicsProgram.strategies.Circle
 {
-    public bool AppliesTo(string userOperationType, string shape)
+    public class CircleIfUserOperation : IUserOperationStrategy
     {
-        return userOperationType.Equals(OperationType.If) && shape.Equals(ShapeType.Circle);
-    }
+        public bool AppliesTo(string userOperationType, string shape)
+        {
+            return userOperationType.Equals(OperationType.If) && shape.Equals(ShapeType.Circle);
+        }
 
-    public void DoDrawing(Pen pen, PenPosition penPosition, Graphics g, string line)
-    {
-        throw new NotImplementedException();
+        public void DoDrawing(Pen pen, PenPosition penPosition, Graphics g, string line)
+        {
+            MessageBox.Show("If statements are not coded yet.", "Uncomplete command", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

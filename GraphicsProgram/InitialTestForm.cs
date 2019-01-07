@@ -10,6 +10,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Input;
+using GraphicsProgram.strategies.Circle;
 
 namespace GraphicsProgram
 {
@@ -21,6 +23,8 @@ namespace GraphicsProgram
 
         string[] commands = new string[] { OperationType.Repeat, OperationType.Loop, OperationType.If };
         string[] shapes = new string[] { ShapeType.Circle, ShapeType.Rectangle, ShapeType.Triangle, ShapeType.Polygon};
+        string[] moveStatus = new string[] {MoveState.Move};
+        string[] penStatus = new string[] {PenState.PenDown, PenState.PenUp};
 
         private readonly IEnumerable<IUserOperationStrategy> _userOperationStrategies;
         private readonly IEnumerable<IPenStrategy> _penStrategies;
@@ -34,8 +38,10 @@ namespace GraphicsProgram
              * Initialise canvas properties
              */
             InitializeComponent();
-            Width = 1000;
-            Height = 500;
+          
+            
+            pen.Y = pictureBox1.Width / 2;
+            pen.X = pictureBox1.Height / 2;
             g = pictureBox1.CreateGraphics();
             pencolorstatus.BackColor = myPen.Color;
 
@@ -66,7 +72,7 @@ namespace GraphicsProgram
             };
         }
 
-    
+
 
         private void UpdatePenPositionBox()
         {
@@ -74,29 +80,29 @@ namespace GraphicsProgram
             textBox2.Text = pen.GetYAsString();
         }
 
-        private void commandCheck()
-        {
-         
-        }
-
         /// <summary>
         /// Method to split user input and 
         /// </summary>
         private void ProcessCommand(string userInput)
         {
-            //Split user input
             var splitString = userInput.Split();
-        
-            //If the input line contains move, call the move strategy
-            pen = userInput.Contains(MoveState.Move) ? _moveStrategies.Single(x => x.AppliesTo(splitString[0].ToLower())).MovePen(userInput.ToLower(), pen, myPen, g) : pen;
 
-            UpdatePenPositionBox();
-            
+
+            //If the input line contains move
+            if (moveStatus.Contains(splitString[0]))
+            {
+                pen = _moveStrategies.Single(x => x.AppliesTo(splitString[0].ToLower())).MovePen(userInput.ToLower(), pen, myPen, g);
+                UpdatePenPositionBox();
+            }
+
             //If the input line contains pen, call pen strategy
-            pen.Enabled = userInput.Contains(PenState.Pen) ? _penStrategies.Single(x => x.AppliesTo(userInput)).ApplyPenState(textBox4) : pen.Enabled;
+            else if (penStatus.Contains(splitString[0]))
+            {
+               _penStrategies.Single(x => x.AppliesTo(userInput.ToLower().Trim())).ApplyPenState(textBox4);
+            }   
 
             //If the input line is a command, call shape & command strategy
-            if (commands.Contains(splitString[0]) && shapes.Contains(splitString[1]))
+            else if (commands.Contains(splitString[0]) && shapes.Contains(splitString[1]))
             {
                 var command = splitString[0];
                 var shape = splitString[1];
@@ -105,10 +111,15 @@ namespace GraphicsProgram
             }
 
             //If the input line is a shape, call shape strategy (Set operation to basic)
-            if (shapes.Contains(splitString[0]))
+            else if (shapes.Contains(splitString[0]))
                 {
                 var shape = splitString[0];
                 _userOperationStrategies.Single(x => x.AppliesTo(OperationType.Basic, shape)).DoDrawing(myPen, pen, g, userInput);
+            }
+
+            else
+            {
+                MessageBox.Show("Incorrect command", "text error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -133,6 +144,20 @@ namespace GraphicsProgram
             {
                 var singleUserInput = SingleLineUserInput.Text;
                 ProcessCommand(singleUserInput);
+            }
+        }
+
+        /// <summary>
+        /// Single line accepts enter as input
+        /// </summary>
+        private void SingleLineUserInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Return))
+            {
+                {
+                    var singleUserInput = SingleLineUserInput.Text;
+                    ProcessCommand(singleUserInput);
+                }
             }
         }
 
@@ -249,12 +274,6 @@ namespace GraphicsProgram
             {
                 Application.Exit();
             }
-        }
-
-        //Displays initial welcome text box
-        private void InitialTestForm_Load(object sender, EventArgs e)
-        {
-            MessageBox.Show("Created by Dean Lingard", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.None);     
         }
 
         //Displays program information message box

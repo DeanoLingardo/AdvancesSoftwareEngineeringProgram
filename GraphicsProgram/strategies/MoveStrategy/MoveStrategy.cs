@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GraphicsProgram.strategies.MoveStrategy
 {
@@ -36,7 +37,7 @@ namespace GraphicsProgram.strategies.MoveStrategy
                     Enabled = penStatus.Enabled
                 };
             }
-            catch
+            catch (Exception)
             {
                 throw new Exception("Unable to parse X & Y co-ordinates, please try again with two integers!");
             }
