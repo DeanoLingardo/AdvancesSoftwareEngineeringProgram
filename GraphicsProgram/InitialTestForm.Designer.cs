@@ -69,7 +69,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -85,6 +84,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -116,7 +117,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2564, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(2564, 42);
             this.menuStrip1.TabIndex = 22;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -129,7 +130,7 @@
             this.exitApplicationToolStripMenuItem});
             this.meniToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.meniToolStripMenuItem.Name = "meniToolStripMenuItem";
-            this.meniToolStripMenuItem.Size = new System.Drawing.Size(90, 36);
+            this.meniToolStripMenuItem.Size = new System.Drawing.Size(90, 38);
             this.meniToolStripMenuItem.Text = "Menu";
             // 
             // newToolStripMenuItem
@@ -210,7 +211,7 @@
             this.movePenXYToolStripMenuItem});
             this.commandsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.commandsToolStripMenuItem.Name = "commandsToolStripMenuItem";
-            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(148, 36);
+            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(148, 38);
             this.commandsToolStripMenuItem.Text = "Commands";
             // 
             // penUpToolStripMenuItem
@@ -258,17 +259,18 @@
             // colourPickerToolStripMenuItem
             // 
             this.colourPickerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.penColorToolStripMenuItem});
+            this.penColorToolStripMenuItem,
+            this.themeToolStripMenuItem});
             this.colourPickerToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.colourPickerToolStripMenuItem.Name = "colourPickerToolStripMenuItem";
-            this.colourPickerToolStripMenuItem.Size = new System.Drawing.Size(88, 36);
+            this.colourPickerToolStripMenuItem.Size = new System.Drawing.Size(88, 38);
             this.colourPickerToolStripMenuItem.Text = "Extras";
             // 
             // penColorToolStripMenuItem
             // 
             this.penColorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("penColorToolStripMenuItem.Image")));
             this.penColorToolStripMenuItem.Name = "penColorToolStripMenuItem";
-            this.penColorToolStripMenuItem.Size = new System.Drawing.Size(224, 38);
+            this.penColorToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.penColorToolStripMenuItem.Text = "Pen Color ";
             this.penColorToolStripMenuItem.Click += new System.EventHandler(this.penColorToolStripMenuItem_Click);
             // 
@@ -279,7 +281,7 @@
             this.programInformationToolStripMenuItem});
             this.helpToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 36);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 38);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // fAQToolStripMenuItem
@@ -316,9 +318,9 @@
             this.clearscreenbutton.BackColor = System.Drawing.Color.Transparent;
             this.clearscreenbutton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.clearscreenbutton.ForeColor = System.Drawing.Color.Black;
-            this.clearscreenbutton.Location = new System.Drawing.Point(41, 1400);
+            this.clearscreenbutton.Location = new System.Drawing.Point(41, 1302);
             this.clearscreenbutton.Name = "clearscreenbutton";
-            this.clearscreenbutton.Size = new System.Drawing.Size(565, 46);
+            this.clearscreenbutton.Size = new System.Drawing.Size(273, 144);
             this.clearscreenbutton.TabIndex = 24;
             this.clearscreenbutton.Text = "CLEAR SCREEN";
             this.clearscreenbutton.UseVisualStyleBackColor = false;
@@ -430,7 +432,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.groupBox1.Location = new System.Drawing.Point(41, 1264);
+            this.groupBox1.Location = new System.Drawing.Point(41, 1169);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(565, 105);
             this.groupBox1.TabIndex = 35;
@@ -446,26 +448,12 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.userinput);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.groupBox2.Location = new System.Drawing.Point(41, 456);
+            this.groupBox2.Location = new System.Drawing.Point(41, 385);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(565, 667);
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Muilti-Line Controls";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(47, 160);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(464, 57);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "RUN SINGLE-LINE";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // groupBox3
             // 
@@ -476,7 +464,7 @@
             this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.groupBox3.Location = new System.Drawing.Point(41, 1134);
+            this.groupBox3.Location = new System.Drawing.Point(41, 1058);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(565, 105);
             this.groupBox3.TabIndex = 36;
@@ -561,13 +549,12 @@
             this.groupBox4.AutoSize = true;
             this.groupBox4.BackColor = System.Drawing.Color.Transparent;
             this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.SingleLineUserInput);
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.groupBox4.Location = new System.Drawing.Point(41, 122);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(565, 296);
+            this.groupBox4.Size = new System.Drawing.Size(565, 239);
             this.groupBox4.TabIndex = 39;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Single-Line Controls";
@@ -576,13 +563,33 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(47, 226);
+            this.button2.Location = new System.Drawing.Point(50, 155);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(464, 40);
             this.button2.TabIndex = 25;
             this.button2.Text = "CLEAR INPUT";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // themeToolStripMenuItem
+            // 
+            this.themeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("themeToolStripMenuItem.Image")));
+            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.themeToolStripMenuItem.Text = "Theme";
+            this.themeToolStripMenuItem.Click += new System.EventHandler(this.themeToolStripMenuItem_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(333, 1302);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(273, 144);
+            this.button1.TabIndex = 40;
+            this.button1.Text = "Coming Soon!";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // InitialTestForm
             // 
@@ -592,6 +599,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(2564, 1502);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.clearscreenbutton);
             this.Controls.Add(this.groupBox3);
@@ -671,7 +679,6 @@
         private System.Windows.Forms.ToolStripMenuItem textFileToolStripMenuItem;
         private System.Windows.Forms.TextBox userinput;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox SingleLineUserInput;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -682,5 +689,7 @@
         private System.Windows.Forms.TextBox pencolorstatus;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }

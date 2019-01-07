@@ -14,7 +14,6 @@ namespace GraphicsProgram.strategies.Triangle
             return userOperationType.Equals(OperationType.Basic) && shape.Equals(ShapeType.Triangle);
         }
 
-    
         public void DoDrawing(Pen pen, PenPosition penPosition, Graphics g, string line)
         {
             var Points = new ShapePoints

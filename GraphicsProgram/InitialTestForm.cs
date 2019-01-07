@@ -102,7 +102,7 @@ namespace GraphicsProgram
             //If the input line contains pen, call pen strategy, 
             else if (penStatus.Contains(splitString[0]))
             {
-               _penStrategies.Single(x => x.AppliesTo(userInput.ToLower().Trim())).ApplyPenState(textBox4);
+               _penStrategies.Single(x => x.AppliesTo(userInput.Trim())).ApplyPenState(textBox4);
 
             }   
 
@@ -286,8 +286,13 @@ namespace GraphicsProgram
         {
             MessageBox.Show("Use Commands tab to see the list of available commands!", "Need Help?", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void themeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Coming Sooon", "Additional Feutre");
+        } 
     }
-    }
+}
     
     
 //Created by Dean Lingard 2018
