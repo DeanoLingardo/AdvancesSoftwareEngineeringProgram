@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 
 ### UML 
-![alt text](/Untitled-Diagram.png)
+![UML Diagram](GPUML-notfinal.png)
 
 
 ### Prerequisites
@@ -26,7 +26,7 @@ Visual Studio
 
 ## Authors
 
-* **Dean Lingard** - *All work* - [DeanoLingardo](https://github.com/deanolingardo)
+* **Dean Lingard** - [DeanoLingardo](https://github.com/deanolingardo)
 
 ## Acknowledgments
 
